@@ -1,7 +1,35 @@
+% Produce background picture on title page featuring the logo of the university.
+
+\ifthenelse{\boolean{titlepagelogo}}{
+  \AddToShipoutPicture*{
+    \put(\logox,\logoy){
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \vfill
+        \centering
+        \begin{tikzpicture}
+          \node [opacity=\logoopacity] (0,0) {
+            \includegraphics[%
+              height=.9\paperheight,%
+              width=.9\paperwidth,%
+              keepaspectratio,%
+            ]{images/logo.png}%
+          };
+        \end{tikzpicture}
+        \vfill
+      }
+    }
+  }
+}{}
+
+% Make sure the title is centered by removing any margin left and right.
+\newgeometry{margin=0cm}
 \maketitle 
+% Restore 'usual' geometry.
+\restoregeometry
 \clearpage
 
 \vspace*{\fill}
+
 
 % When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
 % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee

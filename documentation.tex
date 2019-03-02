@@ -8,6 +8,8 @@
 
 \input{preamble}
 
+\input{style}
+
 \usepackage[sc]{mathpazo}
 
 \includeonly{
@@ -16,22 +18,25 @@
 	content/preliminaries/01-main
 }
 
-\title{Underwater Basket Weaving: An Ontology}
-\author{Dissertation zur Erlangung des Grades 
-\\ des Doktors der Naturwissenschaften \\
+
+\title{\vspace{\pretitlewidth}Underwater Basket Weaving: An Ontology\vspace{\titlesepwidth}}
+\author{Dissertation zur Erlangung des Grades \\ 
+des Doktors der Naturwissenschaften \\
 der Fakultät für Mathematik und Informatik \\
-der Universität des Saarlandes \\ \\
+der Universität des Saarlandes \\[\authorsepwidth]
 vorgelegt von  \\
 Max Mustermann}
 \date{Saarbrücken, 2020}
 
 \begin{document}
+
+	% Frontmatter, i.e. title page, abstract, acknowledgement
 	\pagestyle{empty}
 	\frontmatter
 	\include{frontmatter/frontmatter-main}
 	
+	% Mainmatter, i.e. actual content
 	\pagestyle{scrheadings}
-	
 	\mainmatter
 	% We use include here instead of input in order to be able to use includeonly further above
 	\include{content/introduction/01-main}

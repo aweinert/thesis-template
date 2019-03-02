@@ -1,0 +1,27 @@
+\newboolean{titlepagelogo}
+\setboolean{titlepagelogo}{true}
+
+\newboolean{logobottom}
+\setboolean{logobottom}{true}
+
+\ifthenelse{\boolean{logobottom}}{
+  \newcommand*\logox{0}
+  \newcommand*\logoy{-350}
+  \newcommand*\logoopacity{.3}
+  \newcommand*\authorsepwidth{2cm}
+  \newcommand*\titlesepwidth{1cm}
+  \newcommand*\pretitlewidth{0cm}
+}{
+  \newcommand*\logox{0}
+  \newcommand*\logoy{0}
+  \newcommand*\logoopacity{.1}
+  \newcommand*\authorsepwidth{1cm}
+  \newcommand*\titlesepwidth{0cm}
+  \newcommand*\pretitlewidth{10cm}
+}
+
+\setlist[itemize]{noitemsep, nolistsep}
+\setlist[enumerate]{noitemsep, nolistsep}
+
+\addtoreflist{chapter}
+\addtoreflist{section}
