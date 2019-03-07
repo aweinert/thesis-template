@@ -1,0 +1,67 @@
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes,shapes.symbols,automata,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{fadings}
+
+\tikzfading[name=fade east, left color=transparent!0, right color=transparent!100]
+\tikzfading[name=fade west, left color=transparent!100, right color=transparent!0]
+\tikzfading[name=fade north, bottom color=transparent!0, top color=transparent!100]
+\tikzfading[name=fade south, top color=transparent!0, bottom color=transparent!100]
+
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\tikzset{p0/.style = {shape = ellipse, draw, fill=white, thick, minimum size = 0.7cm}}
+\tikzset{p1/.style = {rectangle, minimum size=.7cm, draw, fill=white, thick}}
+\tikzset{p?/.style = {diamond, minimum size=.75cm, draw, fill=white, thick, inner sep = 2pt}}
+\tikzset{thick,>=stealth, shorten >=1pt}
+\tikzset{edge/.append style={rounded corners}}
+\tikzset{every edge/.style = {->, draw}}
+\tikzset{every loop/.style = {->, draw}}
+\tikzset{every picture/.style = {thick}}
+\tikzset{
+	elided/.style = {%
+		postaction={decorate},%
+		decoration={markings,mark=at position #1 with {\node[fill=white,transform shape] {$\cdots$};}}
+	},
+	elided/.default = .5
+}
+\tikzset{
+	weight/.style args={#1at#2anchor#3}{%
+		postaction={decorate},%
+		decoration={markings,mark=at position #2 with {\node[anchor=#3] {#1};}}
+	}
+}
+\tikzset{
+	tick/.style args={#1at#2}{%
+		postaction={decorate},%
+		decoration={markings,mark=at position #2 with {
+			\draw[-] (0,.1) -- (0,-.1);
+			\node[anchor=north] at (0,-.1) {#1};
+		} }
+	}
+}
+\tikzset{
+	tickleft/.style args={#1at#2}{%
+		postaction={decorate},%
+		decoration={markings,mark=at position #2 with {
+			\draw[-] (0,-.1) -- (0,.1);
+			\node[anchor=south,transform shape] at (0,0) {\rotatebox{-90}{#1}};
+		} }
+	}
+}
+\tikzset{
+	crossed out/.style={%
+		postaction={decorate},%
+		decoration={markings,mark=at position .5 with {\node {\ucmark};}}
+	}
+}

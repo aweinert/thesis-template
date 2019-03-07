@@ -1,0 +1,117 @@
+\chapter{Introduction}
+\seclabel{introduction}
+
+In this chapter, we give an overview over the commands available to you via the preamble and how they are meant to be used.
+
+
+\section{Environments}
+\seclabel{introduction:environments}
+
+\begin{theorem}
+A theorem. Used for results that are usually the main result of a section or chapter.
+\end{theorem}
+
+\begin{proof}
+The proof of the above theorem.	
+\end{proof}
+
+
+\begin{lemma}
+A lemma. Used for auxiliary statements that are used to prove a theorem.
+\end{lemma}
+
+\begin{proof}
+The proof of the above lemma	
+\end{proof}
+
+
+\begin{proposition}
+A proposition. Statements proved by someone else and that are merely repeated for the sake of completeness.
+\end{proposition}
+
+\begin{corollary}
+A corollary. A simple conclusion of existing statements, does not require a proof.
+\end{corollary}
+
+\begin{remark}
+A remark. Used for simple observations that do not require a formal proof.	
+\end{remark}
+
+\begin{example}
+An example.	
+\end{example}
+
+\begin{construction}
+A construction of some object.
+\end{construction}
+
+\section{Labels and References}
+\seclabel{introduction:labels}
+
+The following label commands exist:
+\begin{verbatim}
+	\seclabel \proplabel \lemlabel \corlabel \thmlabel
+	\remlabel \exmlabel \figlabel \tablabel \alglabel
+\end{verbatim}
+
+These serve to label chapters/sections, propositions, lemmas, corollaries, theorems, remarks, examples, figures, tables, and algorithms, respectively.
+For each command \texttt{\textbackslash Xlabel} there exists a corresponding command \texttt{\textbackslash Xref} that produces a reference to that object, including a label stating the kind of object.
+
+\begin{example}
+\exmlabel{introduction:labels}
+This example is labeled with \texttt{\textbackslash exmlabel\{introduction:labels\}}
+\end{example}
+
+The command \texttt{\textbackslash exmref\{introduction:labels\}} then produces the output ``\exmref{introduction:labels}''.
+
+Moreover, for each command \texttt{\textbackslash Xref} there exists a command \texttt{\textbackslash CXref} that, in addition to producing a reference to the example in the main text, also adds a reference to the page that the object occurred on in the margin.
+E.g.,  the command \texttt{\textbackslash Cexmref\{introduction:labels\}} produces the output ``\Cexmref{introduction:labels}''.
+In this context, the ``C'' stands for ``Cross'', i.e., the command \texttt{\textbackslash Cexmref\{introduction:labels\}} can be read as ``crossreference example.''
+
+These commands arose from promoting some lemmas to theorems and demoting theorems to lemmas along the course of writing.
+If one does not pay close attention to the labels in such cases, one might end up with, e.g., Theorem 4.15 that is later on referenced as Lemma 4.15, or vice versa.
+By using the provided commands, such semantical errors will result in compile errors.
+
+The only case which I was not able to automate completely was the case of chapters and (sub)sections.
+Both are labeled with \texttt{\textbackslash seclabel}, but they must be referenced via \texttt{\textbackslash secref} and \texttt{\textbackslash chapref}, respectively.
+
+\section{Definitions}
+\seclabel{introduction:definitions}
+
+If you define a term, you may want to use the macro \texttt{\textbackslash definition}, which produces a little note in the margin alerting the reader to the place of the \definition{definition}.
+You may supply an optional argument in order to change the \definition[other words]{text} appearing in the margin.
+
+\section{Tikz}
+
+See \figref{weight} and \figref{styles}.
+
+\begin{figure} \centering
+\begin{tikzpicture}
+	\node[p?] (player) at (0,0) {$v_0$};
+	\node[p0] (player0) at (4,0) {$v_1$};
+	\node[p1] (player1) at (8,0) {$v_2$};
+	
+	\path
+		(player) edge[weight = 4 at .3 anchor south,elided] (player0)
+		(player0) edge[weight = 4 at .7 anchor north,elided=.2] (player1);
+\end{tikzpicture}
+\caption{Showcasing tikz-styles \texttt{p?}, \texttt{p0}, \texttt{p1}, as well as \texttt{weight} and \texttt{elided}.}
+\figlabel{weight}
+\end{figure}
+
+\begin{figure} \centering
+\begin{tikzpicture}
+	\node[p0] (player) at (0,0) {$v_0$};
+	\node[p0] (player0) at (4,0) {$v_1$};
+	\node[p1] (player1) at (8,0) {$v_2$};
+	\node[p1] (player2) at (8,2) {$v_3$};
+	
+	\path
+		(player) edge[tick={$x_1$} at .2,tick={$x_2$} at .4,tick={$x_3$} at .7] (player0)
+		(player0) edge[crossed out] (player1)
+		(player1) edge[tickleft={$x_4$} at .4] (player2);
+\end{tikzpicture}
+\caption{Showcasing tikz-styles \texttt{tick}, \texttt{tickleft}, and \texttt{crossedout}.}
+\figlabel{styles}
+\end{figure}
+

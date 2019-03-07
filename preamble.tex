@@ -1,0 +1,197 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Headers and Footers
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Leave the following headers empty: Right aligned on Even pages, and Left alignes on Odd pages
+\fancyhead[RE,LO]{}
+% On Even pages, put the section title into the Left header
+\fancyhead[LE]{\textsl{\leftmark}}
+% Leave the Center of the footer empty
+\fancyfoot[C]{}
+% Put the page number on the Left side on Even pages and on the Right side on Odd pages
+\fancyfoot[LE,RO]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Labels and References
+
+% CrossRef and SecCrossRef are not to be used in the main document, but are only used for the concise definition of the following commands
+\newcommand{\CrossRef}[1]{%
+\marginpar{%
+	\footnotesize \MVRightarrow\,%
+	\text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
+}
+\newcommand{\SecCrossRef}[1]{%
+\marginpar{%
+	\footnotesize \MVRightarrow\,%
+	\text{Page~\pageref{#1}}}%
+}
+
+
+\newcommand{\seclabel}[1]{\label{sec:#1}}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\Csecref}[1]{\MVRightarrow\thinspace Section~\ref{sec:#1}\SecCrossRef{sec:#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{sec:#1}}
+\newcommand{\Cchapref}[1]{\MVRightarrow\thinspace Chapter~\ref{sec:#1}\SecCrossRef{sec:#1}}
+
+\newcommand{\proplabel}[1]{\label{prop:#1}}
+\newcommand{\propref}[1]{Proposition~\ref{prop:#1}}
+\newcommand{\subpropref}[2]{Proposition~\ref{prop:#1}.\ref{prop:#1:#2}}
+\newcommand{\Cpropref}[1]{\MVRightarrow\thinspace  Proposition~\ref{prop:#1}\CrossRef{prop:#1}}
+\newcommand{\Csubpropref}[2]{\MVRightarrow\thinspace  Proposition~\ref{prop:#1}.\ref{prop:#1:#2}\CrossRef{prop:#1:#2}}
+
+\newcommand{\lemlabel}[1]{\label{lem:#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{lem:#1}}
+\newcommand{\sublemref}[2]{Lemma~\ref{lem:#1}.\ref{lem:#1:#2}}
+\newcommand{\Clemref}[1]{\MVRightarrow\thinspace Lemma~\ref{lem:#1}\CrossRef{lem:#1}}
+\newcommand{\Csublemref}[2]{\MVRightarrow\thinspace Lemma~\ref{lem:#1}.\ref{lem:#1:#2}\CrossRef{lem:#1:#2}}
+
+\newcommand{\corlabel}[1]{\label{cor:#1}}
+\newcommand{\corref}[1]{Corollary~\ref{cor:#1}}
+\newcommand{\subcorref}[2]{Corollary~\ref{cor:#1}.\ref{cor:#1:#2}}
+\newcommand{\Ccorref}[1]{\MVRightarrow\thinspace Corollary~\ref{cor:#1}\CrossRef{cor:#1}}
+\newcommand{\Csubcorref}[2]{\MVRightarrow\thinspace Corollary~\ref{cor:#1}.\ref{cor:#1:#2}\CrossRef{cor:#1}}
+
+\newcommand{\thmlabel}[1]{\label{thm:#1}}
+\newcommand{\thmref}[1]{Theorem~\ref{thm:#1}}
+\newcommand{\subthmref}[2]{Theorem~\ref{thm:#1}.\ref{thm:#1:#2}}
+\newcommand{\Cthmref}[1]{\MVRightarrow\thinspace Theorem~\ref{thm:#1}\CrossRef{thm:#1}}
+\newcommand{\Csubthmref}[2]{\MVRightarrow\thinspace Theorem~\ref{thm:#1}.\ref{thm:#1:#2}\CrossRef{thm:#1:#2}}
+
+\newcommand{\remlabel}[1]{\label{rem:#1}}
+\newcommand{\remref}[1]{Remark~\ref{rem:#1}}
+\newcommand{\subremref}[2]{Remark~\ref{rem:#1}.\ref{rem:#1:#2}}
+\newcommand{\Cremref}[1]{\MVRightarrow Remark~\ref{rem:#1}\CrossRef{rem:#1}}
+\newcommand{\Csubremref}[2]{\MVRightarrow\thinspace Remark~\ref{rem:#1}.\ref{rem:#1:#2}\CrossRef{rem:#1:#2}}
+
+\newcommand{\exmlabel}[1]{\label{exm:#1}}
+\newcommand{\exmref}[1]{Example~\ref{exm:#1}}
+\newcommand{\Cexmref}[1]{\MVRightarrow\thinspace Example~\ref{exm:#1}\CrossRef{exm:#1}}
+
+\newcommand{\figlabel}[1]{\label{fig:#1}}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\subfigref}[2]{Figure~\ref{fig:#1:#2}}
+\newcommand{\Cfigref}[1]{\MVRightarrow\thinspace Figure~\ref{fig:#1}\CrossRef{fig:#1}}
+\newcommand{\Csubfigref}[2]{\MVRightarrow\thinspace Figure~\ref{fig:#1:#2}\CrossRef{fig:#1:#2}}
+
+\newcommand{\tablabel}[1]{\label{tab:#1}}
+\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
+\newcommand{\Ctabref}[1]{\MVRightarrow\thinspace Table~\ref{tab:#1}\CrossRef{tab:#1}}
+
+\newcommand{\alglabel}[1]{\label{alg:#1}}
+\newcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
+\newcommand{\Calgref}[1]{\MVRightarrow\thinspace Algorithm~\ref{alg:#1}\CrossRef{alg:#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Theorem Environments
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+% Taken from https://tex.stackexchange.com/a/32394
+\newtheorem{examplex}[theorem]{Example}
+\newenvironment{example}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
+  {\popQED\endexamplex}
+\newtheorem{construction}{Construction}[chapter]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Let figures and tables share counter
+
+\makeatletter
+\let\c@table\c@figure
+\makeatother 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Customization of algorithm
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmiccomment}[1]{\hfill{\textcolor{gray}{ /* #1 */ }}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Other Environments
+
+\newcommand{\contribution}[1]{#1}
+\newenvironment{decisionproblem}{\begin{quote}``\!\!}{\!\!''\end{quote}}
+\newenvironment{invariant}{\begin{quotation}}{\end{quotation}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Ugly hack to get useful \vdots, taken from http://tex.stackexchange.com/a/112212
+
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Formatting Help
+
+%\newcommand{\definition}[2][]{\marginpar{\footnotesize #1}\emph{#2}}
+\newcommand{\definition}[2][]{%
+	\marginpar{\footnotesize\flushleft\textbf{Def. }%
+		\ifthenelse{\equal{#1}{}}%
+			{#2} % If-branch
+			{#1} % Else-branch
+		}
+	\textsc{#2}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Checkmarks
+
+\newcommand{\cmark}{{\color{mydarkgreen}{\ding{51}}}}%
+\newcommand{\ucmark}{{\color{gray}{\raisebox{-1pt}{\ding{55}}}}}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Acceptance/Winning Conditions
+
+\newcommand{\safety}[1]{\ensuremath{\textsc{Safety}(#1)}}
+\newcommand{\buchi}[1]{\ensuremath{\textsc{Büchi}(#1)}}
+\newcommand{\parity}[1]{\ensuremath{\textsc{Parity}(#1)}}
+\newcommand{\energyparity}[2]{\ensuremath{\textsc{EnergyParity}_{#1}(#2)}}
+\newcommand{\bndparity}[1]{\ensuremath{\textsc{BndParity}(#1)}}
+\newcommand{\finparity}[1]{\ensuremath{\textsc{FinParity}(#1)}}
+\newcommand{\costparity}[1]{\ensuremath{\textsc{CostParity}(#1)}}
+\newcommand{\bcostparity}[2]{\ensuremath{\textsc{CostParity}_{#1}(#2)}}
+\newcommand{\weightparity}[1]{\ensuremath{\textsc{WeightParity}(#1)}}
+\newcommand{\bweightparity}[2]{\ensuremath{\textsc{WeightParity}_{#1}(#2)}}
+\newcommand{\bndweightparity}[1]{\ensuremath{\textsc{BndWeightParity}(#1)}}
+\newcommand{\meanpayoffparity}[1]{\ensuremath{\textsc{MeanPayoffParity}(#1)}}
+
+\newcommand{\countdown}[1]{\ensuremath{\textsc{Countdown}(#1)}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Complexity Classes
+
+\newcommand{\logspace}{\textsc{LogSpace}\xspace}
+\newcommand{\ptime}{\textsc{PTime}\xspace}
+\newcommand{\up}{\textsc{UP}\xspace}
+\newcommand{\coup}{\textsc{coUP}\xspace}
+\newcommand{\np}{\textsc{NP}\xspace}
+\newcommand{\conp}{\textsc{coNP}\xspace}
+\newcommand{\aptime}{\textsc{APTime}\xspace}
+\newcommand{\pspace}{\textsc{PSpace}\xspace}
+\newcommand{\exptime}{\textsc{ExpTime}\xspace}
+\newcommand{\expspace}{\textsc{ExpSpace}\xspace}
