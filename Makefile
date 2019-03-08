@@ -1,7 +1,7 @@
 .PHONY: documentation.pdf
 
 documentation.pdf:
-	-pdflatex documentation.tex
-	-bibtex main
-	-pdflatex documentation.tex
-	-pdflatex documentation.tex
+	pdflatex -interaction=nonstopmode documentation.tex
+	bibtex documentation
+	pdflatex -interaction=nonstopmode documentation.tex
+	pdflatex -interaction=nonstopmode documentation.tex
