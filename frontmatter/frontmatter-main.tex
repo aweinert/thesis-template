@@ -19,13 +19,15 @@
       }
     }
   }
-}{}
+  % Make sure the title is centered by removing any margin left and right.
+  \newgeometry{margin=0cm}
+  \maketitle 
+  % Restore 'usual' geometry.
+  \restoregeometry
+}{
+  \maketitle 
+}
 
-% Make sure the title is centered by removing any margin left and right.
-\newgeometry{margin=0cm}
-\maketitle 
-% Restore 'usual' geometry.
-\restoregeometry
 \clearpage
 
 \vspace*{\fill}
