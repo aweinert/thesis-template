@@ -4,27 +4,6 @@
 \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathsf}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Headers and Footers
-
-% Change \leftmark for chapters to be of form e.g. `Chapter 1. Introduction`.
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter.~ #1}{}}
-% Change \rightmark for sections to be of form e.g. `1.2. Related Work`.
-\renewcommand{\sectionmark}[1]{\markright{\thesection. ~#1}}
-
-% Header is now in small caps and larger.
-\addtokomafont{pagehead}{\large\scshape}
-% Increase space between sepline and footer.
-\addtokomafont{pagefoot}{\scshape\raisebox{-8pt}}
-
-% On even pages, put the chapter title into the left header
-\lehead{\leftmark}
-% On odd pages, put the section title into the right header
-\rohead{\rightmark}
-% Put the page number on the left side on even pages and on the right side on odd pages
-\lefoot{\thepage}
-\rofoot{\thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
