@@ -33,24 +33,37 @@
 \vspace*{\fill}
 
 
-% When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
-% You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
+\ifthenelse{\boolean{dissertation}}{
+  % When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
+  % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
 
-\begin{tabular}{ll}
-Dean: &Prof. Dr. David Ean \\[\medskipamount]
-Advisor: &PD Dr. Alberta Dorothee Visor  \\[\medskipamount]
-Examination Board: & Prof. Dr. Clara Hair (Chair) \\
-& Prof. Dr. Ernest Xavier Amination \\
-& Prof. Dr. Brigitte Oard \\
-& Dr. Susanne Taff (Academic Staff) \\[\medskipamount]
-Thesis Defence: & February 30, 2020
-
-\end{tabular}
+  \begin{tabular}{ll}
+    Dean: &\DEAN \\[\medskipamount]
+    Advisor: &\ADVISOR  \\[\medskipamount]
+    Examination Board: & \EXAMINERONE\ (Chair) \\
+    & \EXAMINERTWO \\
+    & \EXAMINERTHREE \\
+    & \EXAMINERFOUR\ (Academic Staff) \\[\medskipamount]
+    Thesis Defense: & \DEFENSEDATE
+  \end{tabular}
+}{
+  \begin{tabular}{ll}
+    Supervisor: &\SUPERVISOR \\[\medskipamount]
+    \ifdefined\ADVISOR Advisor: &\ADVISOR  \\[\medskipamount] \fi
+    Reviewer: &\EXAMINERONE \\
+    &\EXAMINERTWO \\[\medskipamount]
+    Submission: &\SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR
+  \end{tabular}
+}
 
 \cleardoublepage
 
 \input{frontmatter/abstract}
 
 \input{frontmatter/acknowledgements}
+
+\ifthenelse{\boolean{dissertation}}{}{
+  \STATEMENTPAGE
+}
 	
 \tableofcontents

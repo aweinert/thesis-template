@@ -1,11 +1,19 @@
 \section*{Abstract}
 
-According to the dissertation regulations, the abstract must not contain more than 1500 characters, including spaces.
+\ifthenelse{\boolean{dissertation}}{
+  According to the dissertation regulations, the abstract must not contain more than 1500 characters, including spaces.
+}{
+  Short summary of what you did. Answer the following questions: What is the thesis about (context), what is missing in existing approaches (gap), and how did you to solve the problem (innovation).
+}
 
 \cleardoublepage
 
 \section*{Zusammenfassung}
-
-Laut Dissertationsordnung darf das abstract nicht mehr als 1500 Zeichen umfassen, Leerzeichen eingeschlossen.
+\ifthenelse{\boolean{dissertation}}{
+  Laut Dissertationsordnung darf das abstract nicht mehr als 1500 Zeichen umfassen, Leerzeichen eingeschlossen.
+}{
+  Eine deutsche Zusammenfassung ist zwar nicht obligatorisch, kann hier aber eingefügt werden.
+  Andernfalls sollte hier alles gelöscht werden, inklusive der Section und des \texttt{\textbackslash cleardoublepage}.
+}
 
 \cleardoublepage

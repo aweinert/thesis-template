@@ -1,13 +1,45 @@
-\newboolean{titlepagelogo}
-\setboolean{titlepagelogo}{true}
 
-\newboolean{logobottom}
-\setboolean{logobottom}{true}
+\newcommand{\STATEMENTPAGE}{
+  ~ \vspace*{2cm} ~
+
+  \textbf{Eidesstattliche Erkl\"arung}
+
+  Ich erkl\"are hiermit an Eides Statt, dass ich die vorliegende Arbeit
+  selbst\"andig verfasst und keine anderen als die angegebenen Quellen und
+  Hilfsmittel verwendet habe.
+
+  \textbf{Statement in Lieu of an Oath}
+
+  I hereby confirm that I have written this thesis on my own and that I
+  have not used any other media or materials than the ones referred to in
+  this thesis.
+
+
+  ~ \vspace{5cm} ~
+
+  \textbf{Einverst\"andniserkl\"arung}
+
+  Ich bin damit einverstanden, dass meine (bestandene) Arbeit in beiden
+  Versionen in die Bibliothek der Informatik aufgenommen und damit
+  ver\"offentlicht wird.
+
+  \textbf{Declaration of Consent}
+
+  I agree to make both versions of my thesis (with a passing grade)
+  accessible to the public by having them added to the library of the
+  Computer Science Department.
+
+  \vspace*{5cm}
+  \noindent\rule{8cm}{.4pt}\\[\medskipamount]
+  \CITY, \SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR
+
+  \cleardoublepage
+}
 
 \ifthenelse{\boolean{logobottom}}{
   \newcommand*\logox{0}
   \newcommand*\logoy{-350}
-  \newcommand*\logoopacity{.3}
+  \newcommand*\logoopacity{.2}
   \newcommand*\authorsepwidth{2cm}
   \newcommand*\titlesepwidth{1cm}
   \newcommand*\pretitlewidth{0cm}
@@ -20,8 +52,50 @@
   \newcommand*\pretitlewidth{10cm}
 }
 
+\date{\CITY, \SUBMISSIONMONTH\ \SUBMISSIONYEAR}
+\title{\vspace{\pretitlewidth}\Huge\TITLE\vspace{\titlesepwidth}}
+\ifthenelse{\boolean{dissertation}}{
+  \author{Dissertation zur Erlangung des Grades \\ 
+  des Doktors der Naturwissenschaften \\
+  der Fakultät für Mathematik und Informatik \\
+  der Universität des Saarlandes \\[\authorsepwidth]
+  vorgelegt von  \\
+  \AUTHOR}
+}{
+  \author{%
+    \Large %
+    \UNIVERSITY\\[\medskipamount]
+    \DEPARTMENT\\[.9\authorsepwidth]
+    \textsc{\THESISKIND's Thesis} \\[.9\authorsepwidth]
+    \emph{submitted by} \\
+    \AUTHOR\\[.9\authorsepwidth]
+  }
+}
+
 \setlist[itemize]{noitemsep, nolistsep}
 \setlist[enumerate]{noitemsep, nolistsep}
 
 \addtoreflist{chapter}
 \addtoreflist{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Headers and Footers
+
+% Change \leftmark for chapters to be of form e.g. `Chapter 1. Introduction`.
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter.~ #1}{}}
+% Change \rightmark for sections to be of form e.g. `1.2. Related Work`.
+\renewcommand{\sectionmark}[1]{\markright{\thesection. ~#1}}
+
+% Header is now in small caps and larger.
+\addtokomafont{pagehead}{\large\scshape}
+% Increase space between sepline and footer.
+\addtokomafont{pagefoot}{\scshape\raisebox{-8pt}}
+
+% On even pages, put the chapter title into the left header
+\lehead{\leftmark}
+% On odd pages, put the section title into the right header
+\rohead{\rightmark}
+% Put the page number on the left side on even pages and on the right side on odd pages
+\lefoot{\thepage}
+\rofoot{\thepage}

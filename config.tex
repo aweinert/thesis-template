@@ -1,0 +1,59 @@
+%%%%%%% LEAVE THE FOLLOWING LINES AS IS %%%%%%%
+\newcommand*{\setauthor}[1]{\newcommand*{\AUTHOR}{#1}}
+\newcommand*{\setexaminerone}[1]{\newcommand*{\EXAMINERONE}{#1}}
+\newcommand*{\setexaminertwo}[1]{\newcommand*{\EXAMINERTWO}{#1}}
+\newcommand*{\setexaminerthree}[1]{\newcommand*{\EXAMINERTHREE}{#1}}
+\newcommand*{\setexaminerfour}[1]{\newcommand*{\EXAMINERFOUR}{#1}}
+\newcommand*{\setadvisor}[1]{\newcommand*{\ADVISOR}{#1}}
+\newcommand*{\setsupervisor}[1]{\newcommand*{\SUPERVISOR}{#1}}
+\newcommand*{\settitle}[1]{\newcommand*{\TITLE}{#1}}
+\newcommand*{\setdean}[1]{\newcommand*{\DEAN}{#1}}
+\newcommand*{\setdefensedate}[1]{\newcommand*{\DEFENSEDATE}{#1}}
+\newcommand*{\setthesiskind}[1]{\newcommand*{\THESISKIND}{#1}}
+\newcommand*{\setuniversity}[1]{\newcommand*{\UNIVERSITY}{#1}}
+\newcommand*{\setdepartment}[1]{\newcommand*{\DEPARTMENT}{#1}}
+\newcommand*{\setcity}[1]{\newcommand*{\CITY}{#1}}
+\newcommand*{\setsubmissiondate}[3]{
+  \newcommand*{\SUBMISSIONDAY}{#1}
+  \newcommand*{\SUBMISSIONMONTH}{#2}
+  \newcommand*{\SUBMISSIONYEAR}{#3}
+}
+\newboolean{titlepagelogo}
+\newboolean{logobottom}
+\newboolean{dissertation}
+
+
+%%%%%%% START CONFIGURING HERE %%%%%%%
+
+\setboolean{titlepagelogo}{true}
+\setboolean{logobottom}{true}
+\setboolean{dissertation}{false}
+
+\settitle{Underwater Basket Weaving: An Ontology}
+\setauthor{Max Mustermann}
+\setcity{Saarbrücken}
+\setsubmissiondate{24}{April}{2019}
+
+\ifthenelse{\boolean{dissertation}}{
+  % First examiner is also chair.
+  \setexaminerone{Prof. Dr. Clara Hair}
+  \setexaminertwo{Prof. Dr. Ernest Xavier Amination}
+  \setexaminerthree{Prof. Dr. Brigitte Oard}
+  % Fourth examiner is from academic staff.
+  \setexaminerfour{Dr. Susanne Taff}
+  \setdean{Prof. Dr. David Ean}
+  \setadvisor{PD Dr. Alberta Dorothee Visor}
+  \setdefensedate{February 30, 2020}
+}{
+  % Usually also the supervisor
+  \setexaminerone{Prof. Albus Percival Wulfric Brian Gandalf}
+  % Second reviewer
+  \setexaminertwo{Prof. Minerva McGonagall}
+  % Usually the PhD student advising you throughout your thesis. May be empty
+  \setadvisor{Hermione Granger}
+  % Usually the head of the group or a post-doc.
+  \setsupervisor{Prof. Albus Percival Wulfric Brian Gandalf}
+  \setthesiskind{Master}
+  \setuniversity{Saarland University}
+  \setdepartment{Department of Computer Science}
+}
