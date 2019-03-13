@@ -110,13 +110,12 @@
 
 % Header is now in small caps and larger.
 \addtokomafont{pagehead}{\large\scshape}
-% Increase space between sepline and footer.
-\addtokomafont{pagefoot}{\scshape\raisebox{-8pt}}
 
 % On even pages, put the chapter title into the left header
 \lehead{\leftmark}
 % On odd pages, put the section title into the right header
 \rohead{\rightmark}
-% Put the page number on the left side on even pages and on the right side on odd pages
-\lefoot{\thepage}
-\rofoot{\thepage}
+% Clear footer right and left, put page number in center
+\lefoot{}
+\rofoot{}
+\cfoot*{\pagemark}
