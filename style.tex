@@ -98,10 +98,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Headers and Footers
 
-% Change \leftmark for chapters to be of form e.g. `Chapter 1. Introduction`.
+% Change \leftmark for chapters to be of form e.g. `1. Introduction`.
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.~ #1}{}}
 % Change \rightmark for sections to be of form e.g. `1.2. Related Work`.
 \renewcommand{\sectionmark}[1]{\markright{\thesection. ~#1}}
+
+% Set chapter numbers to Helvetica.
+\ChNumVar{\fontsize{60}{62}\usefont{OT1}{phv}{m}{n}\selectfont}
+% lmss in bold is as close as we can get to the section font.
+\ChTitleVar{\Huge\usefont{OT1}{lmss}{b}{n}\selectfont}
 
 % Header is now in small caps and larger.
 \addtokomafont{pagehead}{\large\scshape}
