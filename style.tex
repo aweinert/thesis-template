@@ -1,4 +1,20 @@
 
+\makeatletter
+\renewcommand\tableofcontents{%
+    \begin{flushleft}
+      \huge\sf
+      \rule{\textwidth}{.8pt}\\[\medskipamount]
+      \contentsname \\[-\medskipamount]
+      \rule{\textwidth}{.8pt}
+    \end{flushleft}
+   \@starttoc{toc}%
+}
+\makeatother
+
+% Set plain page style for ToC/LoF/LoT spanning more than one page.
+\AfterTOCHead{\pagestyle{plain}}
+\AfterStartingTOC{\clearpage}
+
 \newcommand{\STATEMENTPAGE}{
   ~ \vspace*{2cm} ~
 
