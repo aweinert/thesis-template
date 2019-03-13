@@ -1,19 +1,28 @@
 
-\makeatletter
-\renewcommand\tableofcontents{%
-    \begin{flushleft}
-      \huge\sf
-      \rule{\textwidth}{.8pt}\\[\medskipamount]
-      \contentsname \\[-\medskipamount]
-      \rule{\textwidth}{.8pt}
-    \end{flushleft}
-   \@starttoc{toc}%
-}
-\makeatother
-
 % Set plain page style for ToC/LoF/LoT spanning more than one page.
 \AfterTOCHead{\pagestyle{plain}}
 \AfterStartingTOC{\clearpage}
+
+% Style ToC/... Header:
+% Store the name in old macro to be used in styled version.
+\let\oldcontentsname\contentsname
+\renewcommand{\contentsname}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldcontentsname\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
+\let\oldlistfigurename\listfigurename
+\renewcommand{\listfigurename}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldlistfigurename\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
+\let\oldlisttablename\listtablename
+\renewcommand{\listtablename}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldlisttablename\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
 
 \newcommand{\STATEMENTPAGE}{
   ~ \vspace*{2cm} ~
