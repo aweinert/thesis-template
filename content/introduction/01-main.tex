@@ -78,8 +78,21 @@ Both are labeled with \texttt{\textbackslash seclabel}, but they must be referen
 \section{Definitions}
 \seclabel{introduction:definitions}
 
-If you define a term, you may want to use the macro \texttt{\textbackslash definition}, which produces a little note in the margin alerting the reader to the place of the \definition{definition}.
-You may supply an optional argument in order to change the \definition[other words]{text} appearing in the margin.
+If you define a term, you may want to use the macro \texttt{\textbackslash introterm}, which produces a little note in the margin alerting the reader to the place of the \introterm{introterm}.
+You may supply an optional argument in order to change the \introterm[Optional Arg]{text} appearing in the margin. If the command is \introterm*[Stars]{starred}, it will not be declared as definition in the margin par.
+
+\section{ToDos}
+\seclabel{introduction:todos}
+You can defne\todo{Fix typo} todos either outline or inline. 
+
+Both kinds will appear in the list of todos after the table of contents. You can remove the table by removing the respective line in \texttt{frontmatter/frontmatter-main.tex}.
+\todo[inline]{Insert example for inline todo.}
+Additionally, a \introterm[Global Todo]{global todos} will not be visible at the point of definition but appear in the list of todos. Use this to remind yourself of general problems like consistency checks or vague tasks to be refined and placed later. \globaltodo{Remove list of todos when thesis is ready to go.}
+
+\section{Page Frames}
+\seclabel{introduction:pageframes}
+
+Page frames help you to easily find overfull boxes and guides you when layouting. You can turn them off by change the respective \texttt{\textbackslash includepackage} in \texttt{packages.tex}
 
 \section{Tikz}
 
