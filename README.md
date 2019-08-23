@@ -27,12 +27,12 @@ Note: In the future I might change this slightly by using `cleverref` internally
 When you introduce a new term in a sentence, one usually puts it in an emphasis, such as `This is called a \emph{well-formed} specification.` With this template, use the `\introterm` macro that takes can be starred and takes one optional and one mandatory argument. The mandatory argument is the term you introduce as it occurs in the sentence, emphasized just as when using `\emph`. The optional argument is the stand-alone term you introduce. This term will then be printed in the margin note. In the example above, the noun of the property is "Well-Formedness", so that's what you pass to the optional argument. Lastly, the introduced term in the margin note will be preceded by a bold-face "Def.". If this is undesired, you can star the macro, i.e., use `This is called a \introterm*[Well-Formedness]{well-formed} specification.`
 
 # Configuration
-Check out the [`config.tex`]("https://github.com/Schwenger/Thesis-Template/blob/master/config.tex") file. It contains some essential configurations you need to adapt, such as the author name, reviewers, some options for the title page and whatnot. 
+Check out the [`config.tex`](https://github.com/Schwenger/Thesis-Template/blob/master/config.tex) file. It contains some essential configurations you need to adapt, such as the author name, reviewers, some options for the title page and whatnot. 
 
 There's a couple of boolean switches that should be more or less self-explanatory. I'll make sure this README will never by outdated in this regard by not even attempting to list and explain them here. Just play around with them, go nuts, worst that could happen is that you lose all your progress or your laptop overheats irrecoverably, I dunno `¯\_(ツ)_/¯`.
 
 # Attribution
-The template was originally created by [Alexander Weinert]("https://github.com/aweinert"), thanks so much for sharing!
+The template was originally created by [Alexander Weinert](https://github.com/aweinert), thanks so much for sharing!
 
 I adapted the template in a couple of ways: 
 * It has some Saarland University-specific features such as our great logo on the front page and hints on the PhD thesis requirements (Last update: 2019).
