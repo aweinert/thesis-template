@@ -1,4 +1,4 @@
-# A beautify and Thesis Template that Guides the Reader
+# A Beautify Thesis Template that Guides the Reader
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
 
