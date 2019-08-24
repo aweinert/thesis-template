@@ -83,20 +83,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Theorem Environments
 
-\newtheorem{theorem}{Theorem}[chapter]
+\newcommand*\Vhrulefill[1]{\leavevmode\leaders\hrule height 1ex depth \dimexpr#1-1ex\hfill\kern0pt\noindent}
+\newcommand*{\defheaderline}{{\color{lightgray}\Vhrulefill{1pt}}\newline}
+
+\declaretheoremstyle[
+  headfont=\bfseries,
+  numbered=unless unique,
+  bodyfont=\normalfont,
+  spaceabove=\topsep,
+  postheadspace=1em,
+  headpunct={},
+  postheadhook=\defheaderline,
+  postfoothook=\noindent\defheaderline\vspace{.5\topsep},
+  spacebelow=0pt,  
+]{sepdef}
+
+\declaretheorem[
+  style=sepdef,
+  title=Definition,
+  refname={definition,definitions},
+  Refname={Definition,Definitions}
+]{definition}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{remark}
+\newtheorem{remark}[section]{Remark}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{construction}{Construction}[chapter]
 % Taken from https://tex.stackexchange.com/a/32394
 \newtheorem{examplex}[theorem]{Example}
 \newenvironment{example}
   {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
   {\popQED\endexamplex}
-\newtheorem{construction}{Construction}[chapter]
 
 \NewDocumentCommand{\introterm}{ s o m }{%
   \marginpar{\scriptsize\flushleft%
