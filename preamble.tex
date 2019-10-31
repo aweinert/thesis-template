@@ -11,90 +11,92 @@
 
 % CrossRef and SecCrossRef are not to be used in the main document, but are only used for the concise definition of the following commands
 \newcommand{\CrossRef}[1]{%
-\marginpar{%
-	\footnotesize \MVRightarrow\,%
-	\text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
+\marginnote{%
+  \scriptsize \MVRightarrow\,%
+  \text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
 }
 \newcommand{\SecCrossRef}[1]{%
-\marginpar{%
-	\footnotesize \MVRightarrow\,%
-	\text{Page~\pageref{#1}}}%
+\marginnote{%
+  \scriptsize \MVRightarrow\,%
+  \text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
 }
 
-\newcommand{\seclabel}[1]{\label{sec:#1}}
-\newcommand{\secref}[1]{Section~\ref{sec:#1}}
-\newcommand{\Csecref}[1]{\MVRightarrow\thinspace Section~\ref{sec:#1}\SecCrossRef{sec:#1}}
-\newcommand{\chapref}[1]{Chapter~\ref{sec:#1}}
-\newcommand{\Cchapref}[1]{\MVRightarrow\thinspace Chapter~\ref{sec:#1}\SecCrossRef{sec:#1}}
+\renewcommand*{\raggedleftmarginnote}{} % Fix spacing in margin notes.
 
-\newcommand{\proplabel}[1]{\label{prop:#1}}
-\newcommand{\propref}[1]{Proposition~\ref{prop:#1}}
-\newcommand{\subpropref}[2]{Proposition~\ref{prop:#1}.\ref{prop:#1:#2}}
-\newcommand{\Cpropref}[1]{\MVRightarrow\thinspace  Proposition~\ref{prop:#1}\CrossRef{prop:#1}}
-\newcommand{\Csubpropref}[2]{\MVRightarrow\thinspace  Proposition~\ref{prop:#1}.\ref{prop:#1:#2}\CrossRef{prop:#1:#2}}
+\newcommand{\seclabel}[1]{\label{sec:#1}}
+\newcommand{\secref}[1]{Sec\-tion~\ref{sec:#1}}
+\newcommand{\Csecref}[1]{\intextcrossrefmarker Sec\-tion~\ref{sec:#1}\SecCrossRef{sec:#1}}
+\newcommand{\chapref}[1]{Chap\-ter~\ref{sec:#1}}
+\newcommand{\Cchapref}[1]{\intextcrossrefmarker Chap\-ter~\ref{sec:#1}\SecCrossRef{sec:#1}}
 
 \newcommand{\equlabel}[1]{\label{eq:#1}}
-\newcommand{\equref}[1]{Section~\ref{eq:#1}}
-\newcommand{\Cequref}[1]{\MVRightarrow\thinspace Equation~\ref{eq:#1}\SecCrossRef{eq:#1}}
+\newcommand{\equref}[1]{Equa\-tion~\ref{eq:#1}}
+\newcommand{\Cequref}[1]{\intextcrossrefmarker Equa\-tion~\ref{eq:#1}\SecCrossRef{eq:#1}}
+
+\newcommand{\proplabel}[1]{\label{prop:#1}}
+\newcommand{\propref}[1]{Pro\-po\-si\-tion~\ref{prop:#1}}
+\newcommand{\subpropref}[2]{Pro\-po\-si\-tion~\ref{prop:#1}.\ref{prop:#1:#2}}
+\newcommand{\Cpropref}[1]{\intextcrossrefmarker  Pro\-po\-si\-tion~\ref{prop:#1}\CrossRef{prop:#1}}
+\newcommand{\Csubpropref}[2]{\intextcrossrefmarker Pro\-po\-si\-tion~\ref{prop:#1}.\ref{prop:#1:#2}\CrossRef{prop:#1:#2}}
 
 \newcommand{\lemlabel}[1]{\label{lem:#1}}
 \newcommand{\lemref}[1]{Lemma~\ref{lem:#1}}
 \newcommand{\sublemref}[2]{Lemma~\ref{lem:#1}.\ref{lem:#1:#2}}
-\newcommand{\Clemref}[1]{\MVRightarrow\thinspace Lemma~\ref{lem:#1}\CrossRef{lem:#1}}
-\newcommand{\Csublemref}[2]{\MVRightarrow\thinspace Lemma~\ref{lem:#1}.\ref{lem:#1:#2}\CrossRef{lem:#1:#2}}
+\newcommand{\Clemref}[1]{\intextcrossrefmarker Lemma~\ref{lem:#1}\CrossRef{lem:#1}}
+\newcommand{\Csublemref}[2]{\intextcrossrefmarker Lemma~\ref{lem:#1}.\ref{lem:#1:#2}\CrossRef{lem:#1:#2}}
 
 \newcommand{\corlabel}[1]{\label{cor:#1}}
-\newcommand{\corref}[1]{Corollary~\ref{cor:#1}}
-\newcommand{\subcorref}[2]{Corollary~\ref{cor:#1}.\ref{cor:#1:#2}}
-\newcommand{\Ccorref}[1]{\MVRightarrow\thinspace Corollary~\ref{cor:#1}\CrossRef{cor:#1}}
-\newcommand{\Csubcorref}[2]{\MVRightarrow\thinspace Corollary~\ref{cor:#1}.\ref{cor:#1:#2}\CrossRef{cor:#1}}
+\newcommand{\corref}[1]{Corol\-lary~\ref{cor:#1}}
+\newcommand{\subcorref}[2]{Corol\-lary~\ref{cor:#1}.\ref{cor:#1:#2}}
+\newcommand{\Ccorref}[1]{\intextcrossrefmarker Corol\-lary~\ref{cor:#1}\CrossRef{cor:#1}}
+\newcommand{\Csubcorref}[2]{\intextcrossrefmarker Corol\-lary~\ref{cor:#1}.\ref{cor:#1:#2}\CrossRef{cor:#1}}
 
 \newcommand{\thmlabel}[1]{\label{thm:#1}}
 \newcommand{\thmref}[1]{Theorem~\ref{thm:#1}}
 \newcommand{\subthmref}[2]{Theorem~\ref{thm:#1}.\ref{thm:#1:#2}}
-\newcommand{\Cthmref}[1]{\MVRightarrow\thinspace Theorem~\ref{thm:#1}\CrossRef{thm:#1}}
-\newcommand{\cthmref}[1]{\MVRightarrow\thinspace Thm~\ref{thm:#1}\CrossRef{thm:#1}}
-\newcommand{\Csubthmref}[2]{\MVRightarrow\thinspace Theorem~\ref{thm:#1}.\ref{thm:#1:#2}\CrossRef{thm:#1:#2}}
+\newcommand{\Cthmref}[1]{\intextcrossrefmarker Theorem~\ref{thm:#1}\CrossRef{thm:#1}}
+\newcommand{\cthmref}[1]{\intextcrossrefmarker Thm~\ref{thm:#1}\CrossRef{thm:#1}}
+\newcommand{\Csubthmref}[2]{\intextcrossrefmarker Theorem~\ref{thm:#1}.\ref{thm:#1:#2}\CrossRef{thm:#1:#2}}
 
 \newcommand{\remlabel}[1]{\label{rem:#1}}
 \newcommand{\remref}[1]{Remark~\ref{rem:#1}}
 \newcommand{\subremref}[2]{Remark~\ref{rem:#1}.\ref{rem:#1:#2}}
-\newcommand{\Cremref}[1]{\MVRightarrow Remark~\ref{rem:#1}\CrossRef{rem:#1}}
-\newcommand{\Csubremref}[2]{\MVRightarrow\thinspace Remark~\ref{rem:#1}.\ref{rem:#1:#2}\CrossRef{rem:#1:#2}}
+\newcommand{\Cremref}[1]{\intextcrossrefmarker Remark~\ref{rem:#1}\SecCrossRef{rem:#1}}
+\newcommand{\Csubremref}[2]{\intextcrossrefmarker Remark~\ref{rem:#1}.\ref{rem:#1:#2}\CrossRef{rem:#1:#2}}
 
 \newcommand{\exmlabel}[1]{\label{exm:#1}}
 \newcommand{\exmref}[1]{Example~\ref{exm:#1}}
-\newcommand{\Cexmref}[1]{\MVRightarrow\thinspace Example~\ref{exm:#1}\CrossRef{exm:#1}}
+\newcommand{\Cexmref}[1]{\intextcrossrefmarker Example~\ref{exm:#1}\SecCrossRef{exm:#1}}
 
 \newcommand{\figlabel}[1]{\label{fig:#1}}
 \newcommand{\figref}[1]{Figure~\ref{fig:#1}}
 \newcommand{\subfigref}[2]{Figure~\ref{fig:#1:#2}}
-\newcommand{\Cfigref}[1]{\MVRightarrow\thinspace Figure~\ref{fig:#1}\CrossRef{fig:#1}}
-\newcommand{\Csubfigref}[2]{\MVRightarrow\thinspace Figure~\ref{fig:#1:#2}\CrossRef{fig:#1:#2}}
+\newcommand{\Cfigref}[1]{\intextcrossrefmarker Figure~\ref{fig:#1}\SecCrossRef{fig:#1}}
+\newcommand{\Csubfigref}[2]{\intextcrossrefmarker Figure~\ref{fig:#1:#2}\SecCrossRef{fig:#1:#2}}
 
 \newcommand{\tablabel}[1]{\label{tab:#1}}
 \newcommand{\tabref}[1]{Table~\ref{tab:#1}}
-\newcommand{\Ctabref}[1]{\MVRightarrow\thinspace Table~\ref{tab:#1}\CrossRef{tab:#1}}
+\newcommand{\Ctabref}[1]{\intextcrossrefmarker Table~\ref{tab:#1}\SecCrossRef{tab:#1}}
 
 \newcommand{\alglabel}[1]{\label{alg:#1}}
 \newcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
-\newcommand{\Calgref}[1]{\MVRightarrow\thinspace Algorithm~\ref{alg:#1}\CrossRef{alg:#1}}
+\newcommand{\Calgref}[1]{\intextcrossrefmarker Algorithm~\ref{alg:#1}\SecCrossRef{alg:#1}}
 
 \newcommand{\deflabel}[1]{\label{def:#1}}
 \newcommand{\defref}[1]{Definition~\ref{def:#1}}
-\newcommand{\cdefref}[1]{\MVRightarrow\thinspace Def~\ref{def:#1}\CrossRef{def:#1}}
-\newcommand{\Cdefref}[1]{\MVRightarrow\thinspace Definition~\ref{def:#1}\CrossRef{def:#1}}
+\newcommand{\Cdefref}[1]{\intextcrossrefmarker Def\-i\-ni\-tion~\ref{def:#1}\SecCrossRef{def:#1}}
+\newcommand{\cdefref}[1]{\intextcrossrefmarker Def~\ref{def:#1}\SecCrossRef{def:#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Theorem Environments
 
-\newcommand*\Vhrulefill[1]{\leavevmode\leaders\hrule height 1ex depth \dimexpr#1-1ex\hfill\kern0pt\noindent}
-\newcommand*{\defheaderline}{{\color{lightgray}\Vhrulefill{1pt}}\newline}
+\newcommand*\Vhrulefill[1]{\leavevmode\leaders\hrule height 1ex depth \dimexpr#1-1ex\hfill}
+\newcommand*{\defheaderline}{{\color{lightgray}\Vhrulefill{1pt}}\par}
 
 \declaretheoremstyle[
   headfont=\bfseries,
-  numbered=unless unique,
+  numbered=yes, % DONT change, will break everything for some reason.
   bodyfont=\normalfont,
   spaceabove=\topsep,
   postheadspace=1em,
@@ -117,13 +119,13 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\theoremstyle{remark}
-\newtheorem{remark}[section]{Remark}
+%\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
 
 \theoremstyle{definition}
 \newtheorem{construction}{Construction}[chapter]
 % Taken from https://tex.stackexchange.com/a/32394
-\newtheorem{examplex}[theorem]{Example}
+\newtheorem{examplex}{Example}[section]
 \newenvironment{example}
   {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
   {\popQED\endexamplex}
@@ -224,6 +226,22 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \newcommand\disjointunion{\mathop{\dot\cup}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Variance}{Var}
+\DeclareMathOperator{\Covariance}{Cov}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Math formatting and renames
+\newcommand*{\definedas}{\coloneqq}
+\newcommand*{\set}[1]{\{{#1}\}}
+\newcommand*\cardinality[1]{|{#1}|}
+\newcommand*{\given}{\mid}
+\newcommand*{\from}{\colon}
+\newcommand*{\divides}{\bigm|}
+\newcommand*{\notdivides}{\nmid}
+\newcommand*{\meet}{\sqcap}
+\newcommand*\indicator[1]{\mathds{1}_{#1}}
 \NewDocumentCommand{\twopartdef}{ m m m o}{
   \left\{
     \begin{array}{ll}
@@ -241,8 +259,6 @@
     \end{array}
   \right.
 }
-\newcommand*{\set}[1]{\{{#1}\}}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,3 +267,4 @@
   \addcontentsline{tdo}{todo}{#1}%
 }
 \newcommand*\todoexample{\todo[inline,color=green!30]{Insert Example}}
+\newcommand*\finalizetodo[1]{\todo[color=gray!40]{\scriptsize Finalize: #1}}

@@ -1,6 +1,8 @@
-
 \usepackage[T1]{fontenc} % Enables backslash in tt font face among others
 \usepackage[utf8]{inputenc} % Enable using Umlauts directly in manuscript
+
+\usepackage{kpfonts} % Load kepler fonts.
+\usepackage{zi4} % Nice monospace font
 
 \usepackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage} % Header style
 
@@ -41,7 +43,6 @@
 \usepackage{smartref} % Allow for more flexibility when referencing
 \usepackage{byname}
 
-\usepackage[noadjust]{cite} % Automatically sort citations
 \usepackage{url}
 
 \usepackage[color=blue!20, linecolor=blue!80!black]{todonotes}
@@ -53,5 +54,10 @@
 \usepackage[showframe]{geometry}
 % \usepackage{geometry}
 
+\usepackage{listings} % Code listings
 \usepackage{array} % Definition of table column types.
+\usepackage{dsfont}
+\usepackage[binary,squaren]{SIunits} 
 \usepackage{textcomp} % Fixes font warning in itemize
+\usepackage[style=ACM-Reference-Format,backend=bibtex,sorting=none]{biblatex}
+\usepackage{lstautogobble}  % Fix relative indenting

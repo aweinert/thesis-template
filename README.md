@@ -19,17 +19,25 @@ Lastly, the template is just beautiful! Yes, I know, that's subjective, shut up.
 # How to Use
 For the most part, it's just a LaTeX template. If you know how to tex, you're good to go. Otherwise, go learn it. There's like a bazillion of tutorials out there, most of them awful. Learning by doing is the key here.
 
-When defining a section, rather than using `label{sec:something)`, use `seclabel(something)`. This will automatically create a label prefixed with `sec:`. When you want to refer to it, use either `secref(something)` for a plain old reference that evaluates to `Section XY`, or `Csecref(something)` to create a cross reference with the respective margin note. Even though it's tempting, use cross references sparsely. They do impact the flow of reading — not immensely, but a bit nonetheless. As a rule of thumb, if the definition is in a different chapter or at least 5 pages away, consider using a cross reference.
+When defining a section, rather than using `\label{sec:something)`, use `\seclabel(something)`. This will automatically create a label prefixed with `sec:`. When you want to refer to it, use either `\secref(something)` for a plain old reference that evaluates to `Section XY`, or `\Csecref(something)` to create a cross reference with the respective margin note. Even though it's tempting, use cross references sparsely. They do impact the flow of reading — not immensely, but a bit nonetheless. As a rule of thumb, if the definition is in a different chapter or at least 5 pages away, consider using a cross reference.
 The same kind of label and (cross) reference macros exist for theorems, examples, etc. 
 
 Note: In the future I might change this slightly by using `cleverref` internally. This will probably change the macros as well.
 
 When you introduce a new term in a sentence, one usually puts it in an emphasis, such as `This is called a \emph{well-formed} specification.` With this template, use the `\introterm` macro that takes can be starred and takes one optional and one mandatory argument. The mandatory argument is the term you introduce as it occurs in the sentence, emphasized just as when using `\emph`. The optional argument is the stand-alone term you introduce. This term will then be printed in the margin note. In the example above, the noun of the property is "Well-Formedness", so that's what you pass to the optional argument. Lastly, the introduced term in the margin note will be preceded by a bold-face "Def.". If this is undesired, you can star the macro, i.e., use `This is called a \introterm*[Well-Formedness]{well-formed} specification.`
 
-# Configuration
-Check out the [`config.tex`](https://github.com/Schwenger/Thesis-Template/blob/master/config.tex) file. It contains some essential configurations you need to adapt, such as the author name, reviewers, some options for the title page and whatnot. 
+Note: That there is an annoying bug when two margin notes are created in the same line of the document. In this case, they silently (**!!!**) overlap.  I'm not sure how to fix it, yet, so stay tuned.  If you have an idea, let me know.
 
-There's a couple of boolean switches that should be more or less self-explanatory. I'll make sure this README will never by outdated in this regard by not even attempting to list and explain them here. Just play around with them, go nuts, worst that could happen is that you lose all your progress or your laptop overheats irrecoverably, I dunno `¯\_(ツ)_/¯`.
+# Configuration
+Check out the [`config.tex`](https://github.com/Schwenger/Thesis-Template/blob/master/config.tex) file.  It contains some essential configurations you need to adapt, such as the author name, reviewers, some options for the title page and whatnot. 
+
+There's a couple of boolean switches that should be more or less self-explanatory.  I'll make sure this README will never be outdated in this regard. To this end, I just refrain from listing and explaining them here.  Just play around with them, go nuts, worst that could happen is that you lose all your progress, the build script leaks your private ssh keys, or your laptop overheats irrecoverably, I dunno `¯\_(ツ)_/¯`.
+
+## Night Mode
+If you prefer reading and editing with black-ish background and white font, there is a built-in night mode.  The boolean toggle can be found in [`config.tex`](https://github.com/Schwenger/Thesis-Template/blob/master/config.tex).  The toggle takes care of almost everything, including the coloring for tikz pictures etc. when using default colors.   When using custom colors, however, most of the time you need to supply a light and a dark version thereof.  Check out [`style.tex`](https://github.com/Schwenger/Thesis-Template/blob/master/style.tex) for an example of how to define both versions of the color.
+
+# A Remark on Minimalistic Templates
+A common and sensible goal when writing such a template is to only import packages that are crucial.  Any import that *can* be avoided *should* be avoided; and there are good reasons for that.  So arguably, compliance makes sense.  This template does not comply.  Like, at all.
 
 # Attribution
 The template was originally created by [Alexander Weinert](https://github.com/aweinert), thanks so much for sharing!

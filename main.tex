@@ -4,20 +4,18 @@
 
 \input{config}
 
-\input{colors}
-
 \input{tikz-config}
 
 \input{preamble}
 
 \input{style}
 
-\usepackage[sc]{mathpazo}
-
 \includeonly{
 	frontmatter/frontmatter-main,
 	content/introduction/01-main,
 }
+
+\addbibresource{bibliography.bib}
 
 \begin{document}
 
@@ -34,10 +32,7 @@
 	\include{content/introduction/01-main}
 	
 	\appendix
-
-	\nocite{*}
 	
-	\bibliographystyle{alpha}
-	\bibliography{bibliography}
+	\printbibliography
 	
 \end{document}

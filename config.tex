@@ -6,7 +6,6 @@
 \newcommand*{\setexaminerfour}[1]{\newcommand*{\EXAMINERFOUR}{#1}}
 \newcommand*{\setadvisor}[1]{\newcommand*{\ADVISOR}{#1}}
 \newcommand*{\setsupervisor}[1]{\newcommand*{\SUPERVISOR}{#1}}
-\newcommand*{\settitle}[1]{\newcommand*{\TITLE}{#1}}
 \newcommand*{\setdean}[1]{\newcommand*{\DEAN}{#1}}
 \newcommand*{\setdefensedate}[1]{\newcommand*{\DEFENSEDATE}{#1}}
 \newcommand*{\setthesiskind}[1]{\newcommand*{\THESISKIND}{#1}}
@@ -18,9 +17,17 @@
   \newcommand*{\SUBMISSIONMONTH}{#2}
   \newcommand*{\SUBMISSIONYEAR}{#3}
 }
+
+% The following commands allow us to use the usual title command for declaring the title.
+% The reason is that several editors set the project's title to the argument of \title.
+% We store the usual definition of \title in \constructtitle, use it later and renew \title itself.
+\let\constructtitle\title 
+\renewcommand*{\title}[1]{\newcommand*{\TITLE}{#1}}
+
 \newboolean{titlepagelogo}
 \newboolean{logobottom}
 \newboolean{dissertation}
+\newboolean{nightmode}
 
 
 %%%%%%% START CONFIGURING HERE %%%%%%%
@@ -28,8 +35,12 @@
 \setboolean{titlepagelogo}{true}
 \setboolean{logobottom}{true}
 \setboolean{dissertation}{false}
+\setboolean{nightmode}{false}
 
-\settitle{Underwater Basket Weaving: An Ontology}
+% This is the marker that is used in text before cross references.  Currently empty can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
+\newcommand*\intextcrossrefmarker{}
+
+\title{Underwater Basket Weaving: An Ontology}
 \setauthor{Max Mustermann}
 \setcity{Saarbrücken}
 \setsubmissiondate{24}{April}{2019}
