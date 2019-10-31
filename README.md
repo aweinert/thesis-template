@@ -45,7 +45,8 @@ The template was originally created by [Alexander Weinert](https://github.com/aw
 I adapted the template in a couple of ways: 
 * It has some Saarland University-specific features such as our great logo on the front page and hints on the PhD thesis requirements (Last update: 2019).
 * Some styling of section headers, definition environments etc.
-* There are some interesting macros that work well with the setup created by Alex.
+* There are some interesting macros that synergized with the setup created by Alex.
+* Introduction of night mode.
 
 Feel free to use and adapt this template for your own work, as long as you credit your use of this template.
 The easiest way is to add a line in the acknowledgments referring to the contributors of either Alex' original repository or my fork thereof. 
