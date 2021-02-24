@@ -9,83 +9,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Labels and References
 
-% CrossRef and SecCrossRef are not to be used in the main document, but are only used for the concise definition of the following commands
-\newcommand{\CrossRef}[1]{%
+\newcommand{\MarginCrossRef}[1]{%
 \marginnote{%
   \scriptsize \MVRightarrow\,%
-  \text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
+  \text{\cref{#1}, p.~\pageref{#1}}}%
 }
-\newcommand{\SecCrossRef}[1]{%
-\marginnote{%
-  \scriptsize \MVRightarrow\,%
-  \text{Sec.~\sectionref{#1}, Page~\pageref{#1}}}%
-}
+
+\crefname{definition}{Def.}{Defs.}%
+\crefname{section}{Sect.}{Sect.}%
+\crefname{examplex}{Exm.}{Exms.}%
+\crefname{equation}{Eq.}{Eqs.}%
+\crefname{proposition}{Prop.}{Props.}%
+\crefname{lemma}{Lem.}{Lems.}%
+\crefname{corollary}{Cor.}{Cors.}%
+\crefname{theorem}{Thm.}{Thms.}%
+\crefname{remark}{Rem.}{Rems.}%
+\crefname{figure}{Fig.}{Figs.}%
+\crefname{table}{Tbl.}{Tbls.}%
+\crefname{algorithm}{Alg.}{Algs.}%
+
+\Crefname{examplex}{Example}{Examples}%
 
 \renewcommand*{\raggedleftmarginnote}{} % Fix spacing in margin notes.
 
-\newcommand{\seclabel}[1]{\label{sec:#1}}
-\newcommand{\secref}[1]{Sec\-tion~\ref{sec:#1}}
-\newcommand{\Csecref}[1]{\intextcrossrefmarker Sec\-tion~\ref{sec:#1}\SecCrossRef{sec:#1}}
-\newcommand{\chapref}[1]{Chap\-ter~\ref{sec:#1}}
-\newcommand{\Cchapref}[1]{\intextcrossrefmarker Chap\-ter~\ref{sec:#1}\SecCrossRef{sec:#1}}
-
-\newcommand{\equlabel}[1]{\label{eq:#1}}
-\newcommand{\equref}[1]{Equa\-tion~\ref{eq:#1}}
-\newcommand{\Cequref}[1]{\intextcrossrefmarker Equa\-tion~\ref{eq:#1}\SecCrossRef{eq:#1}}
-
-\newcommand{\proplabel}[1]{\label{prop:#1}}
-\newcommand{\propref}[1]{Pro\-po\-si\-tion~\ref{prop:#1}}
-\newcommand{\subpropref}[2]{Pro\-po\-si\-tion~\ref{prop:#1}.\ref{prop:#1:#2}}
-\newcommand{\Cpropref}[1]{\intextcrossrefmarker  Pro\-po\-si\-tion~\ref{prop:#1}\CrossRef{prop:#1}}
-\newcommand{\Csubpropref}[2]{\intextcrossrefmarker Pro\-po\-si\-tion~\ref{prop:#1}.\ref{prop:#1:#2}\CrossRef{prop:#1:#2}}
-
-\newcommand{\lemlabel}[1]{\label{lem:#1}}
-\newcommand{\lemref}[1]{Lemma~\ref{lem:#1}}
-\newcommand{\sublemref}[2]{Lemma~\ref{lem:#1}.\ref{lem:#1:#2}}
-\newcommand{\Clemref}[1]{\intextcrossrefmarker Lemma~\ref{lem:#1}\CrossRef{lem:#1}}
-\newcommand{\Csublemref}[2]{\intextcrossrefmarker Lemma~\ref{lem:#1}.\ref{lem:#1:#2}\CrossRef{lem:#1:#2}}
-
-\newcommand{\corlabel}[1]{\label{cor:#1}}
-\newcommand{\corref}[1]{Corol\-lary~\ref{cor:#1}}
-\newcommand{\subcorref}[2]{Corol\-lary~\ref{cor:#1}.\ref{cor:#1:#2}}
-\newcommand{\Ccorref}[1]{\intextcrossrefmarker Corol\-lary~\ref{cor:#1}\CrossRef{cor:#1}}
-\newcommand{\Csubcorref}[2]{\intextcrossrefmarker Corol\-lary~\ref{cor:#1}.\ref{cor:#1:#2}\CrossRef{cor:#1}}
-
-\newcommand{\thmlabel}[1]{\label{thm:#1}}
-\newcommand{\thmref}[1]{Theorem~\ref{thm:#1}}
-\newcommand{\subthmref}[2]{Theorem~\ref{thm:#1}.\ref{thm:#1:#2}}
-\newcommand{\Cthmref}[1]{\intextcrossrefmarker Theorem~\ref{thm:#1}\CrossRef{thm:#1}}
-\newcommand{\cthmref}[1]{\intextcrossrefmarker Thm~\ref{thm:#1}\CrossRef{thm:#1}}
-\newcommand{\Csubthmref}[2]{\intextcrossrefmarker Theorem~\ref{thm:#1}.\ref{thm:#1:#2}\CrossRef{thm:#1:#2}}
-
-\newcommand{\remlabel}[1]{\label{rem:#1}}
-\newcommand{\remref}[1]{Remark~\ref{rem:#1}}
-\newcommand{\subremref}[2]{Remark~\ref{rem:#1}.\ref{rem:#1:#2}}
-\newcommand{\Cremref}[1]{\intextcrossrefmarker Remark~\ref{rem:#1}\SecCrossRef{rem:#1}}
-\newcommand{\Csubremref}[2]{\intextcrossrefmarker Remark~\ref{rem:#1}.\ref{rem:#1:#2}\CrossRef{rem:#1:#2}}
-
-\newcommand{\exmlabel}[1]{\label{exm:#1}}
-\newcommand{\exmref}[1]{Example~\ref{exm:#1}}
-\newcommand{\Cexmref}[1]{\intextcrossrefmarker Example~\ref{exm:#1}\SecCrossRef{exm:#1}}
-
-\newcommand{\figlabel}[1]{\label{fig:#1}}
-\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
-\newcommand{\subfigref}[2]{Figure~\ref{fig:#1:#2}}
-\newcommand{\Cfigref}[1]{\intextcrossrefmarker Figure~\ref{fig:#1}\SecCrossRef{fig:#1}}
-\newcommand{\Csubfigref}[2]{\intextcrossrefmarker Figure~\ref{fig:#1:#2}\SecCrossRef{fig:#1:#2}}
-
-\newcommand{\tablabel}[1]{\label{tab:#1}}
-\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
-\newcommand{\Ctabref}[1]{\intextcrossrefmarker Table~\ref{tab:#1}\SecCrossRef{tab:#1}}
-
-\newcommand{\alglabel}[1]{\label{alg:#1}}
-\newcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
-\newcommand{\Calgref}[1]{\intextcrossrefmarker Algorithm~\ref{alg:#1}\SecCrossRef{alg:#1}}
-
-\newcommand{\deflabel}[1]{\label{def:#1}}
-\newcommand{\defref}[1]{Definition~\ref{def:#1}}
-\newcommand{\Cdefref}[1]{\intextcrossrefmarker Def\-i\-ni\-tion~\ref{def:#1}\SecCrossRef{def:#1}}
-\newcommand{\cdefref}[1]{\intextcrossrefmarker Def~\ref{def:#1}\SecCrossRef{def:#1}}
+\newcommand{\CCref}[1]{\intextcrossrefmarker{}\Cref{#1}\MarginCrossRef{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,13 +74,13 @@
 % Taken from https://tex.stackexchange.com/a/32394
 \newtheorem{examplex}{Example}[section]
 \newenvironment{example}
-  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{\(\triangle\)}\examplex}
   {\popQED\endexamplex}
 
 \NewDocumentCommand{\introterm}{ s o m }{%
-  \marginpar{\scriptsize\flushleft%
-    \IfBooleanTF{#1}{}{\textbf{Def. }} % Add Def. only if star is not there.
-    \IfValueTF{#2}{#2}{#3} % Take optional 2nd arg if it exists, otherwise 3rd.
+  \marginnote{\scriptsize\flushleft%
+    \IfBooleanTF{#1}{}{\textbf{Def.}} % Add Def. only if star is not there.
+    \IfValueTF{#2}{#2}{#3}% Take optional 2nd arg if it exists, otherwise 3rd.
   }%
   \emph{#3}%
 }
@@ -143,7 +90,7 @@
 %%% Let figures and tables share counter
 
 \makeatletter
-\let\c@table\c@figure
+\let\c@table\c@figure{}
 \makeatother 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -267,4 +214,4 @@
   \addcontentsline{tdo}{todo}{#1}%
 }
 \newcommand*\todoexample{\todo[inline,color=green!30]{Insert Example}}
-\newcommand*\finalizetodo[1]{\todo[color=gray!40]{\scriptsize Finalize: #1}}
+\NewDocumentCommand{\todocite}{o}{\IfNoValueTF{#1}{Cite}{Cite: #1}}

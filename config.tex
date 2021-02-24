@@ -21,13 +21,14 @@
 % The following commands allow us to use the usual title command for declaring the title.
 % The reason is that several editors set the project's title to the argument of \title.
 % We store the usual definition of \title in \constructtitle, use it later and renew \title itself.
-\let\constructtitle\title 
+\let\constructtitle\title{}
 \renewcommand*{\title}[1]{\newcommand*{\TITLE}{#1}}
 
 \newboolean{titlepagelogo}
 \newboolean{logobottom}
 \newboolean{dissertation}
 \newboolean{nightmode}
+\newboolean{xelatex}
 
 
 %%%%%%% START CONFIGURING HERE %%%%%%%
@@ -36,35 +37,38 @@
 \setboolean{logobottom}{true}
 \setboolean{dissertation}{false}
 \setboolean{nightmode}{false}
+\setboolean{xelatex}{false}
 
-% This is the marker that is used in text before cross references.  Currently empty can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
+% This is the marker that is used in text before cross references.  Empty by default can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
 \newcommand*\intextcrossrefmarker{}
+% \renewcommand*\intextcrossrefmarker{\MVRightarrow\thinspace}
 
 \title{Underwater Basket Weaving: An Ontology}
-\setauthor{Max Mustermann}
+\setauthor{Maximilian Schwenger}
 \setcity{Saarbrücken}
 \setsubmissiondate{24}{April}{2019}
 
 \ifthenelse{\boolean{dissertation}}{
   % First examiner is also chair.
-  \setexaminerone{Prof. Dr. Clara Hair}
-  \setexaminertwo{Prof. Dr. Ernest Xavier Amination}
-  \setexaminerthree{Prof. Dr. Brigitte Oard}
+  \setexaminerone{Prof.~Dr.~Clara Hair}
+  \setexaminertwo{Prof.~Dr.~Ernest Xavier Amination}
+  \setexaminerthree{Prof.~Dr.~Brigitte Oard}
   % Fourth examiner is from academic staff.
-  \setexaminerfour{Dr. Susanne Taff}
-  \setdean{Prof. Dr. David Ean}
-  \setadvisor{PD Dr. Alberta Dorothee Visor}
+  \setexaminerfour{Dr.~Susanne Taff}
+  \setdean{Prof.~Dr.~David Ean}
+  \setadvisor{PD~Dr.~Alberta Dorothee Visor}
   \setdefensedate{February 30, 2020}
 }{
   % Usually also the supervisor
-  \setexaminerone{Prof. Albus Percival Wulfric Brian Gandalf}
+  \setexaminerone{Prof.~Albus Percival Wulfric Brian Gandalf}
   % Second reviewer
-  \setexaminertwo{Prof. Minerva McGonagall}
+  \setexaminertwo{Prof.~Minerva McGonagall}
   % Usually the PhD student advising you throughout your thesis. May be empty
   \setadvisor{Hermione Granger}
   % Usually the head of the group or a post-doc.
-  \setsupervisor{Prof. Albus Percival Wulfric Brian Gandalf}
+  \setsupervisor{Prof.~Albus Percival Wulfric Brian Gandalf}
   \setthesiskind{Master}
   \setuniversity{Saarland University}
   \setdepartment{Department of Computer Science}
 }
+

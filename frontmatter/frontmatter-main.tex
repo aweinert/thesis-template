@@ -23,7 +23,7 @@
   \newgeometry{margin=0cm}
   \maketitle 
   % Restore 'usual' geometry.
-  \restoregeometry
+  \restoregeometry{}
 }{
   \maketitle 
 }
@@ -38,34 +38,34 @@
   % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
 
   \begin{tabular}{ll}
-    Dean: &\DEAN \\[\medskipamount]
-    Advisor: &\ADVISOR  \\[\medskipamount]
-    Examination Board: & \EXAMINERONE\ (Chair) \\
-    & \EXAMINERTWO \\
-    & \EXAMINERTHREE \\
-    & \EXAMINERFOUR\ (Academic Staff) \\[\medskipamount]
-    Thesis Defense: & \DEFENSEDATE
+    Dean: &\DEAN{} \\[\medskipamount]
+    Advisor: &\ADVISOR{} \\[\medskipamount]
+    Examination Board: & \EXAMINERONE~(Chair) \\
+    & \EXAMINERTWO{} \\
+    & \EXAMINERTHREE{} \\
+    & \EXAMINERFOUR~(Academic Staff) \\[\medskipamount]
+    Thesis Defense: & \DEFENSEDATE{}
   \end{tabular}
 }{
   \begin{tabular}{ll}
-    Supervisor: &\SUPERVISOR \\[\medskipamount]
-    \ifdefined\ADVISOR Advisor: &\ADVISOR  \\[\medskipamount] \fi
-    Reviewer: &\EXAMINERONE \\
-    &\EXAMINERTWO \\[\medskipamount]
-    Submission: &\SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR
+    Supervisor: &\SUPERVISOR{} \\[\medskipamount]
+    \ifdefined\ADVISOR~Advisor: &\ADVISOR{} \\[\medskipamount] \fi
+    Reviewer: &\EXAMINERONE{} \\
+    &\EXAMINERTWO{} \\[\medskipamount]
+    Submission: &\SUBMISSIONDAY~\SUBMISSIONMONTH, \SUBMISSIONYEAR{}
   \end{tabular}
 }
 
-\cleardoublepage
+\cleardoublepage{}
 
 \input{frontmatter/abstract}
 
 \input{frontmatter/acknowledgements}
 
 \ifthenelse{\boolean{dissertation}}{}{
-  \STATEMENTPAGE
+  \STATEMENTPAGE{}
 }
 	
 \tableofcontents
 \setcounter{tocdepth}{1}
-\listoftodos
+\listoftodos{}

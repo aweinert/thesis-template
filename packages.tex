@@ -1,14 +1,9 @@
-\usepackage[T1]{fontenc} % Enables backslash in tt font face among others
-\usepackage[utf8]{inputenc} % Enable using Umlauts directly in manuscript
-
-\usepackage{kpfonts} % Load kepler fonts.
-\usepackage{zi4} % Nice monospace font
 
 \usepackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage} % Header style
 
 \usepackage{scrhack} % Fixes warnings due to old versions for floats/ToC lists
 
-\usepackage[Lenny]{fncychap}
+\usepackage[Lenny]{fncychap} % Fancy chapter headings
 
 \usepackage{hyperref} % Make all references etc. clickable.
 
@@ -22,6 +17,7 @@
 \usepackage{thmtools} % More fine-grained control over theorem styles
 \usepackage{mathtools} % Provides \multline
 \usepackage{nicefrac} % Provides \nicefrac for \parnode
+\usepackage[capitalise]{cleveref} % For safer referencing.
 
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e} % For typesetting algorithms
 \usepackage{subcaption} % Enable subfigure-environment
@@ -41,12 +37,12 @@
 \usepackage[inline]{enumitem} % Allow for better control over enumerations and itemizations
 
 \usepackage{smartref} % Allow for more flexibility when referencing
-\usepackage{byname}
+% \usepackage{byname}
 
-\usepackage{url}
+\usepackage{url} % For typesetting URLs
 
-\usepackage[color=blue!20, linecolor=blue!80!black]{todonotes}
-\usepackage{changebar}
+\usepackage[color=blue!20, linecolor=blue!80!black]{todonotes} % Todos.  Remove before publication.
+\usepackage{changebar} % For indicating changes between different versions.
 
 \usepackage{eso-pic} % For the background image on title page.
 
@@ -56,8 +52,8 @@
 
 \usepackage{listings} % Code listings
 \usepackage{array} % Definition of table column types.
-\usepackage{dsfont}
-\usepackage[binary,squaren]{SIunits} 
+\usepackage{dsfont} % For double-stroke fonts
+\usepackage[binary,squaren]{SIunits} % Typesetting of units
 \usepackage{textcomp} % Fixes font warning in itemize
-\usepackage[style=ACM-Reference-Format,backend=bibtex,sorting=none]{biblatex}
+\usepackage[style=ACM-Reference-Format,backend=biber,sorting=none]{biblatex} % Different bibliography.
 \usepackage{lstautogobble}  % Fix relative indenting

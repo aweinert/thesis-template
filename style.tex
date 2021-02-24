@@ -5,19 +5,19 @@
 
 % Style ToC/... Header:
 % Store the name in old macro to be used in styled version.
-\let\oldcontentsname\contentsname
+\let\oldcontentsname\contentsname{}
 \renewcommand{\contentsname}{%
   \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
   \oldcontentsname\\[-2\medskipamount]
   \huge\sf \rule{\textwidth}{.8pt}
 }
-\let\oldlistfigurename\listfigurename
+\let\oldlistfigurename\listfigurename{}
 \renewcommand{\listfigurename}{%
   \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
   \oldlistfigurename\\[-2\medskipamount]
   \huge\sf \rule{\textwidth}{.8pt}
 }
-\let\oldlisttablename\listtablename
+\let\oldlisttablename\listtablename{}
 \renewcommand{\listtablename}{%
   \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
   \oldlisttablename\\[-2\medskipamount]
@@ -25,7 +25,7 @@
 }
 
 \newcommand{\STATEMENTPAGE}{
-  ~ \vspace*{2cm} ~
+  \vspace*{2cm}
 
   \textbf{Eidesstattliche Erkl\"arung}
 
@@ -40,7 +40,7 @@
   this thesis.
 
 
-  ~ \vspace{5cm} ~
+  \vspace{5cm}
 
   \textbf{Einverst\"andniserkl\"arung}
 
@@ -56,9 +56,9 @@
 
   \vspace*{5cm}
   \noindent\rule{8cm}{.4pt}\\[\medskipamount]
-  \CITY, \SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR
+  \CITY, \SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR{}
 
-  \cleardoublepage
+  \cleardoublepage{}
 }
 
 \ifthenelse{\boolean{logobottom}}{
@@ -81,7 +81,7 @@
 \widowpenalty10000
 \clubpenalty10000
 % Allow for page breaks in long equations:
-\allowdisplaybreaks
+\allowdisplaybreaks{}
 % Enable emergency stretches because we don't mind a few empty points.
 \emergencystretch=10pt
 
@@ -115,8 +115,8 @@
 %%% Night Mode Configuration
 
 \ifthenelse{\boolean{nightmode}}{
-  \pagecolor[rgb]{0.3,0.3,0.3}
-  \color[rgb]{1,1,1}
+  \pagecolor[rgb]{0.2,0.2,0.2}
+  \color[rgb]{.9,.9,.9}
   \definecolor{bluekeywords}{RGB}{120, 170, 250}
   \definecolor{greentypes}{RGB}{167, 247, 101}
   \definecolor{redstrings}{RGB}{247, 211, 92}
@@ -133,34 +133,67 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Font Configuration
+
+\ifthenelse{\boolean{xelatex}}{
+  \usepackage{fontspec}
+  % \usepackage{zi4} % Nice monospace font
+  \usepackage[scaled=0.84]{beramono}
+  \setmainfont[ 
+      BoldFont       = texgyrepagella-bold.otf,
+      ItalicFont     = texgyrepagella-italic.otf,
+      BoldItalicFont = texgyrepagella-bolditalic.otf ]
+    {texgyrepagella-regular.otf}
+  \usepackage{unicode-math}
+  \setmathfont{Asana-Math.otf}
+}{
+  \usepackage[utf8]{inputenc}
+  \usepackage[scaled=0.88]{beraserif}
+  \usepackage[scaled=0.85]{berasans}
+  \usepackage[scaled=0.84]{beramono}
+  \usepackage{newpxtext}
+  \usepackage[T1,small,euler-digits]{eulervm} % Euler Math Font
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Headers and Footers
 
 % Change \leftmark for chapters to be of form e.g. `1. Introduction`.
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.~ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.~#1}{}}
 % Change \rightmark for sections to be of form e.g. `1.2. Related Work`.
-\renewcommand{\sectionmark}[1]{\markright{\thesection. ~#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.~#1}}
 
 % Set chapter numbers to Helvetica.
 \ChNumVar{\fontsize{60}{62}\usefont{OT1}{phv}{m}{n}\selectfont}
-% lmss in bold is as close as we can get to the section font.
-\ChTitleVar{\fontsize{30}{33}\usefont{OT1}{lmss}{b}{n}\selectfont}
+% \ChNumVar{\fontsize{60}{62}\normalfont}
 
-% Header is now in small caps and larger.
-\addtokomafont{pagehead}{\large\scshape}
+\ifthenelse{\boolean{xelatex}}{
+  \ChTitleVar{\fontsize{30}{33}\bfseries\sffamily}
+}{
+  \ChTitleVar{\fontsize{30}{33}\bfseries\sffamily\selectfont}
+}
 
+\renewcommand{\chaptermark}[1]{%
+ \markleft{\normalfont\sffamily\thechapter.\ \scshape#1}{}}
+\renewcommand{\sectionmark}[1]{%
+ \markright{\normalfont\sffamily\thesection.\ #1}{}}
+%  \renewcommand{\sectionmark}[1]{%
+%  \markboth{\thesection.\ #1 Whatwhat}{}}
 % On even pages, put the chapter title into the left header
 \lehead{\leftmark}
 % On odd pages, put the section title into the right header
-\rohead{\rightmark}
+\rohead{\normalfont\sffamily\rightmark}
 % Clear footer right and left, put page number in center
 \lefoot*{}
 \rofoot*{}
 \cfoot*{\pagemark}
 
 
-\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
-\newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
-\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+\newcolumntype{L}{>{\(}l<{\)}} % math-mode version of "l" column type
+\newcolumntype{R}{>{\(}r<{\)}} % math-mode version of "r" column type
+\newcolumntype{C}{>{\(}c<{\)}} % math-mode version of "c" column type
 
 \setlength{\marginparwidth}{2.8cm} % Set the margin par width appropriately
 \renewcommand\arraystretch{1.5} % Increase distance between array rows
@@ -192,7 +225,6 @@
     breaklines=true,
     showstringspaces=false,
     breakatwhitespace=true,
-    escapeinside={(*@}{@*)},
     commentstyle=\color{greencomments},
     keywordstyle=[1]\color{bluekeywords},
     stringstyle=\color{redstrings},

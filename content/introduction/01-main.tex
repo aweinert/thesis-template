@@ -1,11 +1,8 @@
-\chapter{Introduction}
-\seclabel{introduction}
+\chapter{Introduction}\label{introduction}
 
 In this chapter, we give an overview over the commands available to you via the preamble and how they are meant to be used.
 
-
-\section{Environments}
-\seclabel{introduction:environments}
+\section{Environments}\label{introduction:environments}
 
 \begin{theorem}
 A theorem. Used for results that are usually the main result of a section or chapter.
@@ -46,57 +43,41 @@ A construction of some object.
 \end{construction}
 
 \section{Labels and References}
-\seclabel{introduction:labels}
 
-The following label commands exist:
-\begin{verbatim}
-	\seclabel \proplabel \lemlabel \corlabel \thmlabel
-	\remlabel \exmlabel \figlabel \tablabel \alglabel
-\end{verbatim}
-
-These serve to label chapters/sections, propositions, lemmas, corollaries, theorems, remarks, examples, figures, tables, and algorithms, respectively.
-For each command \texttt{\textbackslash Xlabel} there exists a corresponding command \texttt{\textbackslash Xref} that produces a reference to that object, including a label stating the kind of object.
-
-\begin{example}
-\exmlabel{introduction:labels}
-This example is labeled with \texttt{\textbackslash exmlabel\{introduction:labels\}}
+There are two interesting ways to typeset references, as exemplified after the following example:
+\begin{example}\label{introduction:labels}
+	This example is labeled with \lstinline|\label{introduction:labels}|
 \end{example}
 
-The command \texttt{\textbackslash exmref\{introduction:labels\}} then produces the output ``\exmref{introduction:labels}''.
+Either use the ordinary cleveref-way with \lstinline|\Cref{label}|, which produces \Cref{introduction:labels}.
+Or, use the cross-ref version thereof, \ie, \lstinline!\CCref!. 
+It will produce the regular reference plus a reference to the page on which the referenced object occurred in the margin.
+E.g., the command \lstinline!\CCref{introduction:labels}! produces the output ``\CCref{introduction:labels}''.
 
-Moreover, for each command \texttt{\textbackslash Xref} there exists a command \texttt{\textbackslash CXref} that, in addition to producing a reference to the example in the main text, also adds a reference to the page that the object occurred on in the margin.
-E.g.,  the command \texttt{\textbackslash Cexmref\{introduction:labels\}} produces the output ``\Cexmref{introduction:labels}''.
-In this context, the ``C'' stands for ``Cross'', i.e., the command \texttt{\textbackslash Cexmref\{introduction:labels\}} can be read as ``crossreference example.''
+\CCref{introduction:labels} and also \CCref{introduction:labels}.
 
-These commands arose from promoting some lemmas to theorems and demoting theorems to lemmas along the course of writing.
-If one does not pay close attention to the labels in such cases, one might end up with, e.g., Theorem 4.15 that is later on referenced as Lemma 4.15, or vice versa.
-By using the provided commands, such semantical errors will result in compile errors.
+Note that all \lstinline|\cref{~}| commands are overwritten by capitalized abbreviations. 
+If you want to add support for a new kind of referencable\dots things, make sure to include a line like \lstinline!\crefname{announcement}{Anou.}{Anous.}! somewhere before you first use it, best in your preamble.
 
-The only case which I was not able to automate completely was the case of chapters and (sub)sections.
-Both are labeled with \texttt{\textbackslash seclabel}, but they must be referenced via \texttt{\textbackslash secref} and \texttt{\textbackslash chapref}, respectively.
+\section{Definitions}\label{introduction:definitions}
 
-\section{Definitions}
-\seclabel{introduction:definitions}
-
-If you define a term, you may want to use the macro \texttt{\textbackslash introterm}, which produces a little note in the margin alerting the reader to the place of the \introterm{introterm}.
+If you define a term, you may want to use the macro \lstinline{\introterm}, which produces a little note in the margin alerting the reader to the place of the \introterm{introterm}.
 You may supply an optional argument in order to change the \introterm[Optional Arg]{text} appearing in the margin. If the command is \introterm*[Stars]{starred}, it will not be declared as definition in the margin par.
 
-\section{ToDos}
-\seclabel{introduction:todos}
+\section{ToDos}\label{introduction:todos}
 You can defne\todo{Fix typo} todos either outline or inline. 
 
-Both kinds will appear in the list of todos after the table of contents. You can remove the table by removing the respective line in \texttt{frontmatter/frontmatter-main.tex}.
+Both kinds will appear in the list of todos after the table of contents. You can remove the table by removing the respective line in \lstinline{frontmatter/frontmatter-main.tex}.
 \todo[inline]{Insert example for inline todo.}
 Additionally, a \introterm[Global Todo]{global todos} will not be visible at the point of definition but appear in the list of todos. Use this to remind yourself of general problems like consistency checks or vague tasks to be refined and placed later. \globaltodo{Remove list of todos when thesis is ready to go.}
 
-\section{Page Frames}
-\seclabel{introduction:pageframes}
+\section{Page Frames}\label{introduction:pageframes}
 
-Page frames help you to easily find overfull boxes and guides you when layouting. You can turn them off by change the respective \texttt{\textbackslash includepackage} in \texttt{packages.tex}
+Page frames help you to easily find overfull boxes and guides you when layouting. You can turn them off by change the respective \lstinline{\includepackage} in \lstinline{packages.tex}
 
 \section{Tikz}
 
-See \figref{weight} and \figref{styles}.
+See \Cref{weight} and \Cref{styles}.
 
 \begin{figure} \centering
 \begin{tikzpicture}
@@ -108,8 +89,7 @@ See \figref{weight} and \figref{styles}.
 		(player) edge[weight = 4 at .3 anchor south,elided] (player0)
 		(player0) edge[weight = 4 at .7 anchor north,elided=.2] (player1);
 \end{tikzpicture}
-\caption{Showcasing tikz-styles \texttt{p?}, \texttt{p0}, \texttt{p1}, as well as \texttt{weight} and \texttt{elided}.}
-\figlabel{weight}
+\caption{Showcasing tikz-styles \texttt{p?}, \texttt{p0}, \texttt{p1}, as well as \texttt{weight} and \texttt{elided}.}\label{weight}
 \end{figure}
 
 \begin{figure} \centering
@@ -124,7 +104,6 @@ See \figref{weight} and \figref{styles}.
 		(player0) edge[crossed out] (player1)
 		(player1) edge[tickleft={$x_4$} at .4] (player2);
 \end{tikzpicture}
-\caption{Showcasing tikz-styles \texttt{tick}, \texttt{tickleft}, and \texttt{crossedout}.}
-\figlabel{styles}
+\caption{Showcasing tikz-styles \texttt{tick}, \texttt{tickleft}, and \texttt{crossedout}.}\label{styles}
 \end{figure}
 

@@ -26,7 +26,7 @@
 \tikzset{
 	elided/.style = {%
 		postaction={decorate},%
-		decoration={markings,mark=at position #1 with {\node[fill=white,transform shape] {$\cdots$};}}
+		decoration={markings,mark=at position #1 with {\node[fill=white,transform shape] {\(\cdots\)};}}
 	},
 	elided/.default = .5
 }
@@ -57,6 +57,6 @@
 \tikzset{
 	crossed out/.style={%
 		postaction={decorate},%
-		decoration={markings,mark=at position .5 with {\node {\ucmark};}}
+		decoration={markings,mark=at position .5 with {\node{\ucmark};}}
 	}
 }
