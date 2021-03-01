@@ -20,6 +20,13 @@
 \usepackage[capitalise]{cleveref} % For safer referencing.
 
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e} % For typesetting algorithms
+\usepackage{etoolbox} % for patching commands
+% Fix misaligned line numbers:
+% https://tex.stackexchange.com/questions/476579/how-to-align-line-numbers-horizontally-with-package-algorithm2e
+\makeatletter
+\patchcmd\algocf@Vline{\vrule}{\vrule \kern-0.4pt}{}{}
+\patchcmd\algocf@Vsline{\vrule}{\vrule \kern-0.4pt}{}{}
+\makeatother
 \usepackage{subcaption} % Enable subfigure-environment
 \usepackage{rotating} % Enable landscape figures on own page
 
