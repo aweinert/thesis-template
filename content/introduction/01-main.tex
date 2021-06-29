@@ -75,35 +75,3 @@ Additionally, a \introterm[Global Todo]{global todos} will not be visible at the
 
 Page frames help you to easily find overfull boxes and guides you when layouting. You can turn them off by change the respective \lstinline{\includepackage} in \lstinline{packages.tex}
 
-\section{Tikz}
-
-See \Cref{weight} and \Cref{styles}.
-
-\begin{figure} \centering
-\begin{tikzpicture}
-	\node[p?] (player) at (0,0) {$v_0$};
-	\node[p0] (player0) at (4,0) {$v_1$};
-	\node[p1] (player1) at (8,0) {$v_2$};
-	
-	\path
-		(player) edge[weight = 4 at .3 anchor south,elided] (player0)
-		(player0) edge[weight = 4 at .7 anchor north,elided=.2] (player1);
-\end{tikzpicture}
-\caption{Showcasing tikz-styles \texttt{p?}, \texttt{p0}, \texttt{p1}, as well as \texttt{weight} and \texttt{elided}.}\label{weight}
-\end{figure}
-
-\begin{figure} \centering
-\begin{tikzpicture}
-	\node[p0] (player) at (0,0) {$v_0$};
-	\node[p0] (player0) at (4,0) {$v_1$};
-	\node[p1] (player1) at (8,0) {$v_2$};
-	\node[p1] (player2) at (8,2) {$v_3$};
-	
-	\path
-		(player) edge[tick={$x_1$} at .2,tick={$x_2$} at .4,tick={$x_3$} at .7] (player0)
-		(player0) edge[crossed out] (player1)
-		(player1) edge[tickleft={$x_4$} at .4] (player2);
-\end{tikzpicture}
-\caption{Showcasing tikz-styles \texttt{tick}, \texttt{tickleft}, and \texttt{crossedout}.}\label{styles}
-\end{figure}
-

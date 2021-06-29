@@ -1,0 +1,354 @@
+\RequirePackage{ifthenx}
+\RequirePackage{etoolbox}
+\RequirePackage{marginnote}
+\RequirePackage{mparhack}
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+\RequirePackage[Lenny]{fncychap}
+\RequirePackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage}
+\RequirePackage{scrhack} 
+\RequirePackage[inline]{enumitem} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Prepare new commands
+\newcommand*{\setauthor}[1]{\newcommand*{\AUTHOR}{#1}}
+\newcommand*{\setexaminerone}[1]{\newcommand*{\EXAMINERONE}{#1}}
+\newcommand*{\setexaminertwo}[1]{\newcommand*{\EXAMINERTWO}{#1}}
+\newcommand*{\setexaminerthree}[1]{\newcommand*{\EXAMINERTHREE}{#1}}
+\newcommand*{\setexaminerfour}[1]{\newcommand*{\EXAMINERFOUR}{#1}}
+\newcommand*{\setadvisor}[1]{\newcommand*{\ADVISOR}{#1}}
+\newcommand*{\setsupervisor}[1]{\newcommand*{\SUPERVISOR}{#1}}
+\newcommand*{\setdean}[1]{\newcommand*{\DEAN}{#1}}
+\newcommand*{\setdefensedate}[1]{\newcommand*{\DEFENSEDATE}{#1}}
+\newcommand*{\setthesiskind}[1]{\newcommand*{\THESISKIND}{#1}}
+\newcommand*{\setuniversity}[1]{\newcommand*{\UNIVERSITY}{#1}}
+\newcommand*{\setdepartment}[1]{\newcommand*{\DEPARTMENT}{#1}}
+\newcommand*{\setcity}[1]{\newcommand*{\CITY}{#1}}
+\newcommand*{\setsubmissiondate}[3]{
+  \newcommand*{\SUBMISSIONDAY}{#1}
+  \newcommand*{\SUBMISSIONMONTH}{#2}
+  \newcommand*{\SUBMISSIONYEAR}{#3}
+}
+
+% The following commands allow us to use the usual title command for declaring the title.
+% The reason is that several editors set the project's title to the argument of \title.
+% We store the usual definition of \title in \constructtitle, use it later and renew \title itself.
+\let\constructtitle\title{}
+\renewcommand*{\title}[1]{\newcommand*{\TITLE}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Define configurable bool flags
+
+\newboolean{titlepagelogo}
+\newboolean{logobottom}
+\newboolean{dissertation}
+\newboolean{nightmode}
+\newboolean{xelatex}
+\newboolean{printversion}
+\newboolean{showframes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Include bool configurations
+
+\input{config}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Import geometry 
+
+% The first shows the dimensions, makes it easier to detect inconsistencies. Switch to latter before submission.
+\ifthenelse{\boolean{showframes}}{
+	\usepackage[showframe]{geometry}
+}{\usepackage{geometry}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Patches and Hacks 
+
+% Fix misaligned line numbers:
+% https://tex.stackexchange.com/questions/476579/how-to-align-line-numbers-horizontally-with-package-algorithm2e
+\makeatletter
+\patchcmd\algocf@Vline{\vrule}{\vrule \kern-0.4pt}{}{}
+\patchcmd\algocf@Vsline{\vrule}{\vrule \kern-0.4pt}{}{}
+\makeatother
+
+% Fix for deprecated font command
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathsf}
+
+% Ugly hack to get useful \vdots, taken from http://tex.stackexchange.com/a/112212
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Labels and References
+
+\newcommand{\MarginCrossRef}[1]{%
+\marginnote{%
+  \scriptsize \MVRightarrow\,%
+  \text{\cref{#1}, p.~\pageref{#1}}}%
+}
+
+\renewcommand*{\raggedleftmarginnote}{} % Fix spacing in margin notes.
+
+\newcommand{\CCref}[1]{\intextcrossrefmarker{}\Cref{#1}\MarginCrossRef{#1}}
+
+\NewDocumentCommand{\introterm}{ s o m }{%
+  \marginnote{\scriptsize\flushleft%
+    \IfBooleanTF{#1}{}{\textbf{Def.}} % Add Def. only if star is not there.
+    \IfValueTF{#2}{#2}{#3}% Take optional 2nd arg if it exists, otherwise 3rd.
+  }%
+  \emph{#3}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Theorem Environments
+
+\newcommand*\Vhrulefill[1]{\leavevmode\leaders\hrule height 1ex depth \dimexpr#1-1ex\hfill}
+\newcommand*{\defheaderline}{{\color{lightgray}\Vhrulefill{1pt}}\par}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Templates for the Statement and Congruence pages
+
+\newcommand{\STATEMENTPAGE}{
+  \vspace*{2cm}
+
+  \noindent\textbf{Eidesstattliche Erkl\"arung}
+
+  \noindent Ich erkl\"are hiermit an Eides Statt, dass ich die vorliegende Arbeit
+  selbst\"andig verfasst und keine anderen als die angegebenen Quellen und
+  Hilfsmittel verwendet habe.
+
+  \bigskip
+  \noindent\textbf{Statement in Lieu of an Oath}
+
+  \noindent I hereby confirm that I have written this thesis on my own and that I
+  have not used any other media or materials than the ones referred to in
+  this thesis.
+
+
+  \vspace{5cm}
+
+  \noindent\textbf{Einverst\"andniserkl\"arung}
+
+  \noindent Ich bin damit einverstanden, dass meine (bestandene) Arbeit in beiden
+  Versionen in die Bibliothek der Informatik aufgenommen und damit
+  ver\"offentlicht wird.
+
+  \bigskip
+  \noindent\textbf{Declaration of Consent}
+
+  \noindent I agree to make both versions of my thesis (with a passing grade)
+  accessible to the public by having them added to the library of the
+  Computer Science Department.
+
+  \vspace*{5cm}
+  \noindent\rule{8cm}{.4pt}\\[\medskipamount]
+  \CITY, \SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR{}
+
+  \cleardoublepage{}
+}
+
+\newcommand{\CONGRUENCESTATEMENT}{
+  \vspace*{2cm}
+
+  \noindent\textbf{Erkl\"arung}
+
+  \noindent Ich erkläre hiermit, dass die vorliegende Arbeit mit der elektronischen Version übereinstimmt.
+
+  \bigskip
+  
+  \noindent\textbf{Statement}
+
+  \noindent I hereby confirm the congruence of the contents of the printed data and the electronic version of the thesis.
+
+  \vspace*{3cm}
+  \noindent\rule{8cm}{.4pt}\\[\medskipamount]
+  \CITY, \SUBMISSIONDAY\ \SUBMISSIONMONTH, \SUBMISSIONYEAR{}
+
+  \cleardoublepage{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Adjust some values and lengths
+
+% Punish widows and orphans because we're awful people:
+\widowpenalty10000
+\clubpenalty10000
+
+% Enable emergency stretches because we don't mind a few empty points.
+\emergencystretch=10pt
+
+% Set the margin par width appropriately
+\setlength{\marginparwidth}{2.8cm} 
+
+% Increase distance between array rows
+\renewcommand\arraystretch{1.5}
+\setlength{\jot}{8pt}
+
+\setdescription{topsep=10pt,itemsep=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Font Style
+
+\ifthenelse{\boolean{xelatex}}{
+  \usepackage{fontspec}
+  % \usepackage{zi4} % Nice monospace font
+  \usepackage[scaled=0.84]{beramono}
+  \setmainfont[ 
+      BoldFont       = texgyrepagella-bold.otf,
+      ItalicFont     = texgyrepagella-italic.otf,
+      BoldItalicFont = texgyrepagella-bolditalic.otf ]
+    {texgyrepagella-regular.otf}
+  \usepackage{unicode-math}
+  \setmathfont{Asana-Math.otf}
+}{
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[scaled=0.88]{beraserif}
+  \usepackage[scaled=0.85]{berasans}
+  \usepackage[scaled=0.84]{beramono}
+  \usepackage{newpxtext}
+  \usepackage[T1,small,euler-digits]{eulervm} % Euler Math Font
+  \linespread{1.05}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Headers and Footers
+
+% Change \leftmark for chapters to be of form e.g. `1. Introduction`.
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.~#1}{}}
+% Change \rightmark for sections to be of form e.g. `1.2. Related Work`.
+\renewcommand{\sectionmark}[1]{\markright{\thesection.~#1}}
+
+% Set chapter numbers to Helvetica.
+\ChNumVar{\fontsize{60}{62}\usefont{OT1}{phv}{m}{n}\selectfont}
+% \ChNumVar{\fontsize{60}{62}\normalfont}
+
+\ifthenelse{\boolean{xelatex}}{
+  \ChTitleVar{\fontsize{30}{33}\bfseries\sffamily}
+}{
+  \ChTitleVar{\fontsize{30}{33}\bfseries\sffamily\selectfont}
+}
+
+\renewcommand{\chaptermark}[1]{%
+ \markleft{\normalfont\sffamily\thechapter.\ \scshape#1}{}}
+\renewcommand{\sectionmark}[1]{%
+ \markright{\normalfont\sffamily\thesection.\ #1}{}}
+%  \renewcommand{\sectionmark}[1]{%
+%  \markboth{\thesection.\ #1 Whatwhat}{}}
+% On even pages, put the chapter title into the left header
+\lehead{\leftmark}
+% On odd pages, put the section title into the right header
+\rohead{\normalfont\sffamily\rightmark}
+% Clear footer right and left, put page number in center
+\lefoot*{}
+\rofoot*{}
+\cfoot*{\pagemark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Style title page
+
+\date{\CITY, \SUBMISSIONMONTH\ \SUBMISSIONYEAR}
+\constructtitle{\vspace{\pretitlewidth}\Huge\TITLE\vspace{\titlesepwidth}}
+\ifthenelse{\boolean{dissertation}}{
+  \author{Dissertation zur Erlangung des Grades \\ 
+  des Doktors der Naturwissenschaften \\
+  der Fakultät für Mathematik und Informatik \\
+  der Universität des Saarlandes \\[\authorsepwidth]
+  vorgelegt von  \\
+  \AUTHOR}
+}{
+  \author{%
+    \Large %
+    \UNIVERSITY\\[\medskipamount]
+    \DEPARTMENT\\[.9\authorsepwidth]
+    \textsc{\THESISKIND's Thesis} \\[.9\authorsepwidth]
+    \emph{submitted by} \\
+    \AUTHOR\\[.9\authorsepwidth]
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Style the Logo on the Front Page
+
+\ifthenelse{\boolean{logobottom}}{
+  \newcommand*\logox{0}
+  \newcommand*\logoy{-350}
+  \newcommand*\logoopacity{.3}
+  \newcommand*\authorsepwidth{2cm}
+  \newcommand*\titlesepwidth{1cm}
+  \newcommand*\pretitlewidth{0cm}
+}{
+  \newcommand*\logox{0}
+  \newcommand*\logoy{0}
+  \newcommand*\logoopacity{.1}
+  \newcommand*\authorsepwidth{1cm}
+  \newcommand*\titlesepwidth{0cm}
+  \newcommand*\pretitlewidth{10cm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Let figures and tables share counter
+
+\makeatletter
+\let\c@table\c@figure{}
+\makeatother 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Style ToC and Header
+
+% Set plain page style for ToC/LoF/LoT spanning more than one page.
+\AfterTOCHead{\pagestyle{plain}}
+\AfterStartingTOC{\clearpage}
+
+% Style ToC/... Header:
+% Store the name in old macro to be used in styled version.
+\let\oldcontentsname\contentsname{}
+\renewcommand{\contentsname}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldcontentsname\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
+\let\oldlistfigurename\listfigurename{}
+\renewcommand{\listfigurename}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldlistfigurename\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
+\let\oldlisttablename\listtablename{}
+\renewcommand{\listtablename}{%
+  \huge\sf \rule{\textwidth}{.8pt}\\[\medskipamount]%
+  \oldlisttablename\\[-2\medskipamount]
+  \huge\sf \rule{\textwidth}{.8pt}
+}
+
+
+
+
+

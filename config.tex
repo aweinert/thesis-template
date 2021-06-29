@@ -1,61 +1,3 @@
-%%%%%%% LEAVE THE FOLLOWING LINES AS IS %%%%%%%
-\newcommand*{\setauthor}[1]{\newcommand*{\AUTHOR}{#1}}
-\newcommand*{\setexaminerone}[1]{\newcommand*{\EXAMINERONE}{#1}}
-\newcommand*{\setexaminertwo}[1]{\newcommand*{\EXAMINERTWO}{#1}}
-\newcommand*{\setexaminerthree}[1]{\newcommand*{\EXAMINERTHREE}{#1}}
-\newcommand*{\setexaminerfour}[1]{\newcommand*{\EXAMINERFOUR}{#1}}
-\newcommand*{\setadvisor}[1]{\newcommand*{\ADVISOR}{#1}}
-\newcommand*{\setsupervisor}[1]{\newcommand*{\SUPERVISOR}{#1}}
-\newcommand*{\setdean}[1]{\newcommand*{\DEAN}{#1}}
-\newcommand*{\setdefensedate}[1]{\newcommand*{\DEFENSEDATE}{#1}}
-\newcommand*{\setthesiskind}[1]{\newcommand*{\THESISKIND}{#1}}
-\newcommand*{\setuniversity}[1]{\newcommand*{\UNIVERSITY}{#1}}
-\newcommand*{\setdepartment}[1]{\newcommand*{\DEPARTMENT}{#1}}
-\newcommand*{\setcity}[1]{\newcommand*{\CITY}{#1}}
-\newcommand*{\setsubmissiondate}[3]{
-  \newcommand*{\SUBMISSIONDAY}{#1}
-  \newcommand*{\SUBMISSIONMONTH}{#2}
-  \newcommand*{\SUBMISSIONYEAR}{#3}
-}
-
-% The following commands allow us to use the usual title command for declaring the title.
-% The reason is that several editors set the project's title to the argument of \title.
-% We store the usual definition of \title in \constructtitle, use it later and renew \title itself.
-\let\constructtitle\title{}
-\renewcommand*{\title}[1]{\newcommand*{\TITLE}{#1}}
-
-\newboolean{titlepagelogo}
-\newboolean{logobottom}
-\newboolean{dissertation}
-\newboolean{nightmode}
-\newboolean{xelatex}
-\newboolean{printversion}
-\newboolean{showframes}
-
-
-%%%%%%% START CONFIGURING HERE %%%%%%%
-
-% Decide whether or not you want the beloved own on the title page.
-\setboolean{titlepagelogo}{true}
-% Determines the placement of the owl.  Hard to explain, try out both.
-\setboolean{logobottom}{true}
-% Determines whether or not you are writing a dissertation or a bachelor/master thesis.
-% Has an impact on the frontmatter.
-\setboolean{dissertation}{false}
-% Turn night mode on or off.
-\setboolean{nightmode}{false}
-% Switch XeLaTeX on or off. Generally, if the xelatex version is running, it simplifies a couple things.  Changes fonts.
-% If either of the font sets is fine for you, use xelatex until you encounter a problem.  You'll find more support online for regular latex.
-\setboolean{xelatex}{false}
-% Allows you to include a statement that the print version and the digital versions are congruent.
-% This is required for the print versions at Saarland University.
-\setboolean{printversion}{true}
-% Shows or hides frames. Useful for finding overfull boxes.
-\setboolean{showframes}{true}
-
-% This is the marker that is used in text before cross references.  Empty by default can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
-\newcommand*\intextcrossrefmarker{}
-% \renewcommand*\intextcrossrefmarker{\MVRightarrow\thinspace}
 
 \title{Underwater Basket Weaving: An Ontology}
 \setauthor{Maximilian Schwenger}
@@ -85,4 +27,27 @@
   \setuniversity{Saarland University}
   \setdepartment{Department of Computer Science}
 }
+
+
+% Decide whether or not you want the beloved own on the title page.
+\setboolean{titlepagelogo}{true}
+% Determines the placement of the owl.  Hard to explain, try out both.
+\setboolean{logobottom}{true}
+% Determines whether or not you are writing a dissertation or a bachelor/master thesis.
+% Has an impact on the frontmatter.
+\setboolean{dissertation}{false}
+% Turn night mode on or off.
+\setboolean{nightmode}{false}
+% Switch XeLaTeX on or off. Generally, if the xelatex version is running, it simplifies a couple things.  Changes fonts.
+% If either of the font sets is fine for you, use xelatex until you encounter a problem.  You'll find more support online for regular latex.
+\setboolean{xelatex}{false}
+% Allows you to include a statement that the print version and the digital versions are congruent.
+% This is required for the print versions at Saarland University.
+\setboolean{printversion}{true}
+% Shows or hides frames. Useful for finding overfull boxes.
+\setboolean{showframes}{true}
+
+% This is the marker that is used in text before cross references.  Empty by default can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
+\newcommand*\intextcrossrefmarker{}
+%\renewcommand*\intextcrossrefmarker{\MVRightarrow\thinspace}
 

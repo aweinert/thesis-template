@@ -1,6 +1,6 @@
 \usepackage{xifthen} % Provides \xisempty{}
-\input{config}
-
+\usepackage{tikz}
+\input{tikz-config}
 
 \usepackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage} % Header style
 
@@ -22,21 +22,16 @@
 \usepackage{nicefrac} % Provides \nicefrac for \parnode
 \usepackage[capitalise]{cleveref} % For safer referencing.
 
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % For typesetting algorithms
 \usepackage{etoolbox} % for patching commands
-% Fix misaligned line numbers:
-% https://tex.stackexchange.com/questions/476579/how-to-align-line-numbers-horizontally-with-package-algorithm2e
-\makeatletter
-\patchcmd\algocf@Vline{\vrule}{\vrule \kern-0.4pt}{}{}
-\patchcmd\algocf@Vsline{\vrule}{\vrule \kern-0.4pt}{}{}
-\makeatother
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % For typesetting algorithms
+
 \usepackage{subcaption} % Enable subfigure-environment
 \usepackage{rotating} % Enable landscape figures on own page
 
 \usepackage{booktabs} % For print-quality tables
 \usepackage{multirow,multicol} % Provides \multirow and \multicol
 \usepackage{xspace} % Provides \xspace
-\usepackage[dvipsnames,svgnames]{xcolor} % Allow for own color definitions
+%\usepackage[dvipsnames]{xcolor} % Allow for own color definitions
 \usepackage{xparse} % More powerful macro definitions
 
 \usepackage{pifont} % Allows inclusion of checkmarks
@@ -63,8 +58,3 @@
 \usepackage{textcomp} % Fixes font warning in itemize
 \usepackage[style=ACM-Reference-Format,backend=biber,sorting=none]{biblatex} % Different bibliography.
 \usepackage{lstautogobble}  % Fix relative indenting
-
-% The first shows the dimensions, makes it easier to detect inconsistencies. Switch to latter before submission.
-\ifthenelse{\boolean{showframes}}{
-	\usepackage[showframe]{geometry}
-}{\usepackage{geometry}}
