@@ -1,3 +1,6 @@
+\usepackage{xifthen} % Provides \xisempty{}
+\input{config}
+
 
 \usepackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage} % Header style
 
@@ -34,7 +37,6 @@
 \usepackage{multirow,multicol} % Provides \multirow and \multicol
 \usepackage{xspace} % Provides \xspace
 \usepackage[dvipsnames,svgnames]{xcolor} % Allow for own color definitions
-\usepackage{xifthen} % Provides \xisempty{}
 \usepackage{xparse} % More powerful macro definitions
 
 \usepackage{pifont} % Allows inclusion of checkmarks
@@ -53,9 +55,6 @@
 
 \usepackage{eso-pic} % For the background image on title page.
 
-% The first shows the dimensions, makes it easier to detect inconsistencies. Switch to latter before submission.
-\usepackage[showframe]{geometry}
-% \usepackage{geometry}
 
 \usepackage{listings} % Code listings
 \usepackage{array} % Definition of table column types.
@@ -64,3 +63,8 @@
 \usepackage{textcomp} % Fixes font warning in itemize
 \usepackage[style=ACM-Reference-Format,backend=biber,sorting=none]{biblatex} % Different bibliography.
 \usepackage{lstautogobble}  % Fix relative indenting
+
+% The first shows the dimensions, makes it easier to detect inconsistencies. Switch to latter before submission.
+\ifthenelse{\boolean{showframes}}{
+	\usepackage[showframe]{geometry}
+}{\usepackage{geometry}}

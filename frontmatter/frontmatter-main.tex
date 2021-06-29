@@ -65,6 +65,10 @@
 \ifthenelse{\boolean{dissertation}}{}{
   \STATEMENTPAGE{}
 }
+
+\ifthenelse{\boolean{printversion}}{
+  \CONGRUENCESTATEMENT{}
+}{}
 	
 \tableofcontents
 \setcounter{tocdepth}{1}
