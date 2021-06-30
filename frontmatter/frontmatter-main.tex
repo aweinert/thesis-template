@@ -1,24 +1,6 @@
-% Produce background picture on title page featuring the logo of the university.
 
 \ifthenelse{\boolean{titlepagelogo}}{
-  \AddToShipoutPicture*{
-    \put(\logox,\logoy){
-      \parbox[b][\paperheight]{\paperwidth}{%
-        \vfill
-        \centering
-        \begin{tikzpicture}
-          \node [opacity=\logoopacity] (0,0) {
-            \includegraphics[%
-              height=.9\paperheight,%
-              width=.9\paperwidth,%
-              keepaspectratio,%
-            ]{images/logo.png}%
-          };
-        \end{tikzpicture}
-        \vfill
-      }
-    }
-  }
+  \ifthenelse{\boolean{nightmode}}{\printlogotransparentbg}{\printlogoopaquebg}
   % Make sure the title is centered by removing any margin left and right.
   \newgeometry{margin=0cm}
   \maketitle 

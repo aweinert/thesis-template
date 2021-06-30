@@ -349,6 +349,34 @@
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Background image for title page
 
+% Produce background picture on title page featuring the logo of the university.
+\makeatletter
+\newcommand{\@printlogo}[1]{
+\AddToShipoutPicture*{
+    \put(\logox,\logoy){
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \vfill
+        \centering
+        \begin{tikzpicture}
+          \node [opacity=\logoopacity] (0,0) {
+            \includegraphics[%
+              height=.9\paperheight,%
+              width=.9\paperwidth,%
+              keepaspectratio,%
+            ]{#1}
+          };
+        \end{tikzpicture}
+        \vfill
+      }
+    }
+  }
+}
+\newcommand{\printlogotransparentbg}{\@printlogo{images/logo.png}}
+\newcommand{\printlogoopaquebg}{\@printlogo{images/logo.pdf}}
+\makeatother
 
 
