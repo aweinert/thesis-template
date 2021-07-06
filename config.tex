@@ -10,7 +10,7 @@
 \setboolean{logobottom}{true}
 % Determines whether or not you are writing a dissertation or a bachelor/master thesis.
 % Has an impact on the frontmatter.
-\setboolean{dissertation}{true}
+\setboolean{dissertation}{false}
 % Turn night mode on or off.
 \setboolean{nightmode}{false}
 % Switch XeLaTeX on or off. Generally, if the xelatex version is running, it simplifies a couple things.  Changes fonts.
@@ -28,6 +28,9 @@
 
 
 \ifthenelse{\boolean{dissertation}}{
+  % When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
+  % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
+
   % First examiner is also chair.
   \setexaminerone{Prof.~Dr.~Clara Hair}
   \setexaminertwo{Prof.~Dr.~Ernest Xavier Amination}
@@ -36,6 +39,8 @@
   \setexaminerfour{Dr.~Susanne Taff}
   \setdean{Prof.~Dr.~David Ean}
   \setadvisor{PD~Dr.~Alberta Dorothee Visor}
+  % Second advisor is optional
+  %\setadvisortwo{PD~Dr.~Alberta Dorothee Visor II}
   \setdefensedate{February 30, 2020}
 }{
   % Usually also the supervisor
@@ -44,6 +49,8 @@
   \setexaminertwo{Prof.~Minerva McGonagall}
   % Usually the PhD student advising you throughout your thesis. May be empty
   \setadvisor{Hermione Granger}
+  % Second advisor is optional
+  %\setadvisortwo{Ronald Bilius Weasley}
   % Usually the head of the group or a post-doc.
   \setsupervisor{Prof.~Albus Percival Wulfric Brian Gandalf}
   \setthesiskind{Master}

@@ -16,12 +16,15 @@
 
 
 \ifthenelse{\boolean{dissertation}}{
-  % When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
-  % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
 
   \begin{tabular}{ll}
     Dean: &\DEAN{} \\[\medskipamount]
-    Advisor: &\ADVISOR{} \\[\medskipamount]
+    Advisor: &\ADVISOR{}
+    \ifdef{\ADVISORTWO}{%
+        \\%
+        &\ADVISORTWO{}%
+    }{}%
+    \\[\medskipamount]
     Examination Board: & \EXAMINERONE~(Chair) \\
     & \EXAMINERTWO{} \\
     & \EXAMINERTHREE{} \\
@@ -31,7 +34,14 @@
 }{
   \begin{tabular}{ll}
     Supervisor: &\SUPERVISOR{} \\[\medskipamount]
-    \ifdefined\ADVISOR Advisor: &\ADVISOR{} \\[\medskipamount] \fi
+    \ifdef{\ADVISOR}{%
+    	Advisor: &\ADVISOR{}
+	    \ifdef{\ADVISORTWO}{%
+    	    \\%
+        	&\ADVISORTWO{}%
+	    }{}%
+	    \\[\medskipamount]
+	}{}%
     Reviewer: &\EXAMINERONE{} \\
     &\EXAMINERTWO{} \\[\medskipamount]
     Submission: &\SUBMISSIONDAY~\SUBMISSIONMONTH, \SUBMISSIONYEAR{}
