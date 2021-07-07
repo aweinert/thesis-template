@@ -64,6 +64,11 @@ If you want to add support for a new kind of referencable\dots things, make sure
 If you define a term, you may want to use the macro \lstinline{\introterm}, which produces a little note in the margin alerting the reader to the place of the \introterm{introterm}.
 You may supply an optional argument in order to change the \introterm[Optional Arg]{text} appearing in the margin. If the command is \introterm*[Stars]{starred}, it will not be declared as definition in the margin par.
 
+Apart from that, there is the good ol' definition environment.
+\begin{definition}[Definition]
+	A \introterm[Definition]{definition} is defined as defining an entity.
+\end{definition}
+
 \section{ToDos}\label{introduction:todos}
 You can defne\todo{Fix typo} todos either outline or inline. 
 

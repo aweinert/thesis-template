@@ -105,10 +105,11 @@
 
 \newcommand{\CCref}[1]{\intextcrossrefmarker{}\Cref{#1}\MarginCrossRef{#1}}
 
-\NewDocumentCommand{\introterm}{ s o m }{%
-  \marginnote{\scriptsize\flushleft%
-    \IfBooleanTF{#1}{}{\textbf{Def.}} % Add Def. only if star is not there.
-    \IfValueTF{#2}{#2}{#3}% Take optional 2nd arg if it exists, otherwise 3rd.
+\NewDocumentCommand{\introterm}{ s o m }{% Print optional 2nd arg if it exists, otherwise 3rd.
+  \marginnote{\scriptsize%
+    \IfBooleanTF{#1}{%
+    \IfValueTF{#2}{#2}{#3}%
+    }{\textbf{Def.} \IfValueTF{#2}{#2}{#3}} % Add Def. only if star is not there.
   }%
   \emph{#3}%
 }
