@@ -1,0 +1,60 @@
+
+\title{Underwater Basket Weaving: An Ontology}
+\setauthor{Maximilian Schwenger}
+\setcity{Saarbrücken}
+\setsubmissiondate{24}{April}{2019}
+
+% Decide whether or not you want the beloved own on the title page.
+\setboolean{titlepagelogo}{true}
+% Determines the placement of the owl.  Hard to explain, try out both.
+\setboolean{logobottom}{true}
+% Determines whether or not you are writing a dissertation or a bachelor/master thesis.
+% Has an impact on the frontmatter.
+\setboolean{dissertation}{false}
+% Turn night mode on or off.
+\setboolean{nightmode}{false}
+% Switch XeLaTeX on or off. Generally, if the xelatex version is running, it simplifies a couple things.  Changes fonts.
+% If either of the font sets is fine for you, use xelatex until you encounter a problem.  You'll find more support online for regular latex.
+\setboolean{xelatex}{false}
+% Allows you to include a statement that the print version and the digital versions are congruent.
+% This is required for the print versions at Saarland University.
+\setboolean{printversion}{true}
+% Shows or hides frames. Useful for finding overfull boxes.
+\setboolean{showframes}{true}
+
+% This is the marker that is used in text before cross references.  Empty by default can e.g. be `\MVRightarrow\thinspace ' for an arrow in front of it, such as `-> Definition 5'.
+\newcommand*\intextcrossrefmarker{}
+%\renewcommand*\intextcrossrefmarker{\MVRightarrow\thinspace}
+
+
+\ifthenelse{\boolean{dissertation}}{
+  % When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
+  % You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
+
+  % First examiner is also chair.
+  \setexaminerone{Prof.~Dr.~Clara Hair}
+  \setexaminertwo{Prof.~Dr.~Ernest Xavier Amination}
+  \setexaminerthree{Prof.~Dr.~Brigitte Oard}
+  % Fourth examiner is from academic staff.
+  \setexaminerfour{Dr.~Susanne Taff}
+  \setdean{Prof.~Dr.~David Ean}
+  \setadvisor{PD~Dr.~Alberta Dorothee Visor}
+  % Second advisor is optional
+  %\setadvisortwo{PD~Dr.~Alberta Dorothee Visor II}
+  \setdefensedate{February 30, 2020}
+}{
+  % Usually also the supervisor
+  \setexaminerone{Prof.~Albus Percival Wulfric Brian Gandalf}
+  % Second reviewer
+  \setexaminertwo{Prof.~Minerva McGonagall}
+  % Usually the PhD student advising you throughout your thesis. May be empty
+  \setadvisor{Hermione Granger}
+  % Second advisor is optional
+  %\setadvisortwo{Ronald Bilius Weasley}
+  % Usually the head of the group or a post-doc.
+  \setsupervisor{Prof.~Albus Percival Wulfric Brian Gandalf}
+  \setthesiskind{Master}
+  \setuniversity{Saarland University}
+  \setdepartment{Department of Computer Science}
+}
+
