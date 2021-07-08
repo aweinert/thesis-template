@@ -275,6 +275,8 @@
 \date{\CITY, \SUBMISSIONMONTH\ \SUBMISSIONYEAR}
 \constructtitle{\vspace{\pretitlewidth}\Huge\TITLE\vspace{\titlesepwidth}}
 \ifthenelse{\boolean{dissertation}}{
+  % The date should be only the submission year.
+  \date{\CITY -- \SUBMISSIONYEAR}
   \author{Dissertation zur Erlangung des Grades \\ 
   des Doktors der Naturwissenschaften \\
   der Fakultät für Mathematik und Informatik \\
@@ -282,6 +284,7 @@
   vorgelegt von  \\
   \AUTHOR}
 }{
+  \date{\CITY, \SUBMISSIONMONTH\ \SUBMISSIONYEAR}
   \author{%
     \Large %
     \UNIVERSITY\\[\medskipamount]
