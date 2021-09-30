@@ -60,18 +60,25 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\Variance}{Var}
 \DeclareMathOperator{\Covariance}{Cov}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Math formatting and renames
 \newcommand*{\definedas}{\coloneqq}
-\newcommand*{\set}[1]{\{{#1}\}}
+\NewDocumentCommand{\set}{ s m }{%
+	\IfBooleanTF{#1}%
+		{ \{#2\} }%
+		{ \left\{{#2}\right\} }%
+}
 \newcommand*\cardinality[1]{|{#1}|}
 \newcommand*{\given}{\mid}
 \newcommand*{\from}{\colon}
 \newcommand*{\divides}{\bigm|}
 \newcommand*{\notdivides}{\nmid}
 \newcommand*{\meet}{\sqcap}
+\newcommand*\bigmeet{\bigsqcap}
 \newcommand*\indicator[1]{\mathds{1}_{#1}}
 \NewDocumentCommand{\twopartdef}{ m m m o}{
   \left\{
@@ -84,9 +91,19 @@
 \NewDocumentCommand{\threepartdef}{m m m m m o}{
   \left\{
     \begin{array}{lll}
-    #1 & \mbox{if } #2 \\
+      #1 & \mbox{if } #2 \\
       #3 & \mbox{if } #4 \\
       #5 & \IfNoValueTF{#6}{\text{otherwise}}{\mbox{if } #6}
+    \end{array}
+  \right.
+}
+\NewDocumentCommand{\fourpartdef}{m m m m m m m m o}{
+  \left\{
+    \begin{array}{llll}
+      #1 & \mbox{if } #2 \\
+      #3 & \mbox{if } #4 \\
+      #5 & \mbox{if } #6 \\
+      #7 & \IfNoValueTF{#8}{\text{otherwise}}{\mbox{if } #8}
     \end{array}
   \right.
 }
