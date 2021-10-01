@@ -95,24 +95,49 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Labels and References
 
-\newcommand{\MarginCrossRef}[1]{%
-\marginnote{%
-  \scriptsize \MVRightarrow\,%
-  \text{\cref{#1}, p.~\pageref{#1}}}%
+\NewDocumentCommand{\CrefAbbrevNames}{}{%
+	\Crefname{definition}{Def.}{Defs.}%
+	\Crefname{section}{Sec.}{Secs.}%
+	\Crefname{examplex}{Ex.}{Exs.}%
+	\Crefname{equation}{Eq.}{Eqs.}%
+	\Crefname{proposition}{Prop.}{Props.}%
+	\Crefname{lemma}{Lem.}{Lems.}%
+	\Crefname{corollary}{Cor.}{Cors.}%
+	\Crefname{theorem}{Thm.}{Thms.}%
+	\Crefname{remark}{Rem.}{Rems.}%
+	\Crefname{figure}{Fig.}{Figs.}%
+	\Crefname{table}{Tbl.}{Tbls.}%
+	\Crefname{algorithm}{Alg.}{Algs.}%
 }
 
-\renewcommand*{\raggedleftmarginnote}{} % Fix spacing in margin notes.
+\NewDocumentCommand{\shortCref}{ s m }{{% The nested block here is important.
+\CrefAbbrevNames%
+\renewcommand{\crefrangeconjunction}{--}%
+\renewcommand{\crefpairconjunction}{, }%
+%    \renewcommand{\crefmiddleconjunction}{⟨conjunction ⟩} 
+\renewcommand{\creflastconjunction}{, }%
+\Cref{#2}%
+}}
+  
+\newcommand{\MarginCrossRef}[1]{%
+\raggedmarginpar{%
+  \scriptsize \MVRightarrow\,\shortCref{#1}, p.~\labelcpageref{#1}}%
+}
 
 \newcommand{\CCref}[1]{\intextcrossrefmarker{}\Cref{#1}\MarginCrossRef{#1}}
 
 \NewDocumentCommand{\introterm}{ s o m }{% Print optional 2nd arg if it exists, otherwise 3rd.
-  \marginnote{\scriptsize%
+  \raggedmarginpar{\scriptsize%
     \IfBooleanTF{#1}{%
-    \IfValueTF{#2}{#2}{#3}%
-    }{\textbf{Def.} \IfValueTF{#2}{#2}{#3}} % Add Def. only if star is not there.
+	    \IfValueTF{#2}{#2}{#3}%
+    }{%
+    	\textbf{Def.}~\IfValueTF{#2}{#2}{#3}% Add Def. only if star is not there.
+    }%
   }%
   \emph{#3}%
 }
+
+\newcommand*\raggedmarginpar[1]{\marginpar[{\raggedleft #1}]{\raggedright #1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,6 +278,9 @@
   \ChTitleVar{\fontsize{30}{33}\bfseries\sffamily\selectfont}
 }
 
+% Allows you to move the footer and page number further away from the text
+%\setlength{\footskip}{90pt}
+
 \renewcommand{\chaptermark}[1]{%
  \markleft{\normalfont\sffamily\thechapter.\ \scshape#1}{}}
 \renewcommand{\sectionmark}[1]{%
@@ -276,7 +304,7 @@
 \constructtitle{\vspace{\pretitlewidth}\Huge\TITLE\vspace{\titlesepwidth}}
 \ifthenelse{\boolean{dissertation}}{
   % The date should be only the submission year.
-  \date{\CITY -- \SUBMISSIONYEAR}
+  \date{\CITY, \SUBMISSIONYEAR}
   \author{Dissertation zur Erlangung des Grades \\ 
   des Doktors der Naturwissenschaften \\
   der Fakultät für Mathematik und Informatik \\

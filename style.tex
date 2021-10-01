@@ -19,6 +19,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Theorem Environments
 
+\AtBeginEnvironment{definition}{\Needspace{3\baselineskip}}% \break if fewer than 5\baselineskip is available on page
+
 \declaretheoremstyle[
   headfont=\bfseries,
   numbered=yes, % DONT change, will break everything for some reason.
@@ -27,15 +29,16 @@
   postheadspace=1em,
   headpunct={},
   postheadhook=\defheaderline,
-  postfoothook=\noindent\defheaderline\vspace{.5\topsep},
-  spacebelow=0pt,  
+  prefoothook=\\*\noindent\defheaderline,
+  spacebelow=.5\topsep,  
 ]{sepdef}
 
 \declaretheorem[
   style=sepdef,
   title=Definition,
   refname={definition,definitions},
-  Refname={Definition,Definitions}
+  Refname={Definition,Definitions},
+  numberwithin=chapter
 ]{definition}
 
 \theoremstyle{plain}

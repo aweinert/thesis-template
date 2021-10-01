@@ -116,4 +116,12 @@
   \addcontentsline{tdo}{todo}{#1}%
 }
 \newcommand*\todoexample{\todo[inline,color=green!30]{Insert Example}}
-\NewDocumentCommand{\todoc}{o}{\IfNoValueTF{#1}{Cite}{Cite: #1}}
+\NewDocumentCommand{\todoc}{o}{[?]\todo{\IfNoValueTF{#1}{Cite}{Cite: #1}}~}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\newcommand{\wildcard}{\_}
+
+
+
