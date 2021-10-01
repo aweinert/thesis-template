@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Names and abbreviations for in references
+\crefname{definition}{Def.}{Defs.}%
+\crefname{section}{Sect.}{Sect.}%
+\crefname{examplex}{Exm.}{Exms.}%
+\crefname{equation}{Eq.}{Eqs.}%
+\crefname{proposition}{Prop.}{Props.}%
+\crefname{lemma}{Lem.}{Lems.}%
+\crefname{corollary}{Cor.}{Cors.}%
+\crefname{theorem}{Thm.}{Thms.}%
+\crefname{remark}{Rem.}{Rems.}%
+\crefname{figure}{Fig.}{Figs.}%
+\crefname{table}{Tbl.}{Tbls.}%
+\crefname{algorithm}{Alg.}{Algs.}%
+\Crefname{examplex}{Example}{Examples}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Allow for page breaks in long equations:
+\allowdisplaybreaks{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% What should be included in the ref list
+
+\addtoreflist{chapter}
+\addtoreflist{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Frontmatter-related Style
+
+\newcommand*\revieweradvisorlistdiss{
+  \begin{tabular}{ll}
+    Dean: &\DEAN{} \\[\medskipamount]
+    Advisor: &\ADVISOR{}
+    \ifdef{\ADVISORTWO}{%
+        \\%
+        &\ADVISORTWO{}%
+    }{}%
+    \\[\medskipamount]
+    Examination Board: & \EXAMINERONE~(Chair) \\
+    & \EXAMINERTWO{} \\
+    & \EXAMINERTHREE{} \\
+    & \EXAMINERFOUR~(Academic Staff) \\[\medskipamount]
+    Thesis Defense: & \DEFENSEDATE{}
+  \end{tabular}
+}
+\newcommand*\revieweradvisorlistthesis{
+  \begin{tabular}{ll}
+    Supervisor: &\SUPERVISOR{} \\[\medskipamount]
+    \ifdef{\ADVISOR}{%
+    	Advisor: &\ADVISOR{}
+	    \ifdef{\ADVISORTWO}{%
+    	    \\%
+        	&\ADVISORTWO{}%
+	    }{}%
+	    \\[\medskipamount]
+	}{}%
+    Reviewer: &\EXAMINERONE{} \\
+    &\EXAMINERTWO{} \\[\medskipamount]
+    Submission: &\SUBMISSIONMONTH~\SUBMISSIONDAY, \SUBMISSIONYEAR{}
+  \end{tabular}
+}
+
+\newcommand*\revieweradvisorlist{
+	\ifthenelse{\boolean{dissertation}}{
+		\revieweradvisorlistdiss
+	}{
+	    \revieweradvisorlistthesis
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Define custom language, exemplified by RTLola
+
+\lstdefinelanguage{Lola}{
+  keywords=[0]{input, output, trigger},
+  keywordstyle=[0]\bfseries\color{bluekeywords},
+  keywords=[1]{if, then, else, aggregate, defaults, offset},
+  keywords=[2]{Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64, Bool, Float32, Float64, @1Hz, @5Hz, @10Hz, @100mHz, @1kHz},
+  keywordstyle=[2]\color{greentypes},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]"
+}
+
+\lstset{
+    autogobble,
+    language={Lola},
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    commentstyle=\color{greencomments},
+    keywordstyle=[1]\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b,
+    mathescape,
+}
+
+% Language without any highlighting.
+\lstdefinelanguage{none}{
+  identifierstyle=
+}

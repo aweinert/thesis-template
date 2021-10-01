@@ -1,26 +1,35 @@
-\maketitle 
+
+\ifthenelse{\boolean{titlepagelogo}}{
+  \ifthenelse{\boolean{nightmode}}{\printlogotransparentbg}{\printlogoopaquebg}
+  % Make sure the title is centered by removing any margin left and right.
+  \newgeometry{margin=0cm}
+  \maketitle 
+  % Restore 'usual' geometry.
+  \restoregeometry{}
+}{
+  \maketitle 
+}
+
 \clearpage
 
 \vspace*{\fill}
 
-% When producing the version that is to be given to the reviewers, it would be best to replace these names with N.N.
-% You do not yet officially know the reviewers, as they are determined by your Promotionskomittee
+\revieweradvisorlist
 
-\begin{tabular}{ll}
-Dean: &Prof. Dr. David Ean \\[\medskipamount]
-Advisor: &PD Dr. Alberta Dorothee Visor  \\[\medskipamount]
-Examination Board: & Prof. Dr. Clara Hair (Chair) \\
-& Prof. Dr. Ernest Xavier Amination \\
-& Prof. Dr. Brigitte Oard \\
-& Dr. Susanne Taff (Academic Staff) \\[\medskipamount]
-Thesis Defence: & February 30, 2020
-
-\end{tabular}
-
-\cleardoublepage
+\cleardoublepage{}
 
 \input{frontmatter/abstract}
 
 \input{frontmatter/acknowledgements}
+
+\ifthenelse{\boolean{dissertation}}{}{
+  \STATEMENTPAGE{}
+}
+
+\ifthenelse{\boolean{printversion}}{
+  \CONGRUENCESTATEMENT{}
+}{}
 	
 \tableofcontents
+\setcounter{tocdepth}{1}
+\listoftodos{}

@@ -1,0 +1,36 @@
+\documentclass[a4paper,fleqn]{scrbook}
+
+\input{internals}
+
+\input{packages}
+
+\input{commands}
+
+\input{style}
+
+\includeonly{
+	frontmatter/frontmatter-main,
+	content/introduction/01-main,
+}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+\begin{document}
+
+
+	% Frontmatter, i.e. title page, abstract, acknowledgement
+	\pagestyle{empty}
+	\frontmatter
+	\include{frontmatter/frontmatter-main}
+	
+	% Mainmatter, i.e. actual content
+	\pagestyle{scrheadings}
+	\mainmatter{}
+	% We use include here instead of input in order to be able to use includeonly further above
+	\include{content/introduction/01-main}
+	
+	\appendix
+	
+	\printbibliography{}
+	
+\end{document}

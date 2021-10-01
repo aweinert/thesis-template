@@ -1,3 +1,0 @@
-language: minimal
-before_install: sudo apt-get install texlive-full
-script: make
