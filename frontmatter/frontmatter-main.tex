@@ -14,38 +14,7 @@
 
 \vspace*{\fill}
 
-
-\ifthenelse{\boolean{dissertation}}{
-  \begin{tabular}{ll}
-    Dean: &\DEAN{} \\[\medskipamount]
-    Advisor: &\ADVISOR{}
-    \ifdef{\ADVISORTWO}{%
-        \\%
-        &\ADVISORTWO{}%
-    }{}%
-    \\[\medskipamount]
-    Examination Board: & \EXAMINERONE~(Chair) \\
-    & \EXAMINERTWO{} \\
-    & \EXAMINERTHREE{} \\
-    & \EXAMINERFOUR~(Academic Staff) \\[\medskipamount]
-    Thesis Defense: & \DEFENSEDATE{}
-  \end{tabular}
-}{
-  \begin{tabular}{ll}
-    Supervisor: &\SUPERVISOR{} \\[\medskipamount]
-    \ifdef{\ADVISOR}{%
-    	Advisor: &\ADVISOR{}
-	    \ifdef{\ADVISORTWO}{%
-    	    \\%
-        	&\ADVISORTWO{}%
-	    }{}%
-	    \\[\medskipamount]
-	}{}%
-    Reviewer: &\EXAMINERONE{} \\
-    &\EXAMINERTWO{} \\[\medskipamount]
-    Submission: &\SUBMISSIONMONTH~\SUBMISSIONDAY, \SUBMISSIONYEAR{}
-  \end{tabular}
-}
+\revieweradvisorlist
 
 \cleardoublepage{}
 

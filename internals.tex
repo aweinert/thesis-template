@@ -6,7 +6,11 @@
 \RequirePackage[Lenny]{fncychap}
 \RequirePackage[headsepline=.6pt,footsepline=false]{scrlayer-scrpage}
 \RequirePackage{scrhack} 
+\RequirePackage{xcolor} 
 \RequirePackage[inline]{enumitem} 
+\RequirePackage{amsthm}
+\RequirePackage{thmtools}
+\RequirePackage{array}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -412,4 +416,74 @@
 \newcommand{\printlogoopaquebg}{\@printlogo{images/logo.pdf}}
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Night Mode Style
 
+\ifthenelse{\boolean{nightmode}}{
+  \pagecolor[rgb]{0.2,0.2,0.2}
+  \color[rgb]{.9,.9,.9}
+  \definecolor{bluekeywords}{RGB}{120, 170, 250}
+  \definecolor{greentypes}{RGB}{167, 247, 101}
+  \definecolor{redstrings}{RGB}{247, 211, 92}
+  \definecolor{graynumbers}{rgb}{0.8, 0.8, 0.8}
+  \definecolor{goldcomments}{RGB}{247, 211, 92}
+  \renewcommand*\logoopacity{1}
+}{
+  \definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+  \definecolor{greentypes}{rgb}{0, 0.5, 0}
+  \definecolor{redstrings}{RGB}{171, 114, 2}
+  \definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+  \definecolor{goldcomments}{rgb}{0.6, 0.4, 0.08}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Theorem Environments
+
+\AtBeginEnvironment{definition}{\Needspace{3\baselineskip}}% \break if fewer than 5\baselineskip is available on page
+
+\declaretheoremstyle[
+  headfont=\bfseries,
+  numbered=yes, % DONT change, will break everything for some reason.
+  bodyfont=\normalfont,
+  spaceabove=\topsep,
+  postheadspace=1em,
+  headpunct={},
+  postheadhook=\defheaderline,
+  prefoothook=\\*\noindent\defheaderline,
+  spacebelow=.5\topsep,  
+]{sepdef}
+
+\declaretheorem[
+  style=sepdef,
+  title=Definition,
+  refname={definition,definitions},
+  Refname={Definition,Definitions},
+  numberwithin=chapter
+]{definition}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{construction}{Construction}[chapter]
+% Taken from https://tex.stackexchange.com/a/32394
+\newtheorem{examplex}{Example}[section]
+\newenvironment{example}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{\(\triangle\)}\examplex}
+  {\popQED\endexamplex}
+  
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Table styles
+
+\newcolumntype{L}{>{\(}l<{\)}} % math-mode version of "l" column type
+\newcolumntype{R}{>{\(}r<{\)}} % math-mode version of "r" column type
+\newcolumntype{C}{>{\(}c<{\)}} % math-mode version of "c" column type
